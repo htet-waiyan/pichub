@@ -1,0 +1,33 @@
+{
+  "name": "PicHub",
+  "version": "0.1.0",
+  "description": "Free user-centered image database where photos are free",
+  "main": "server/app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "body-parser": "^1.10.2",
+    "express": "^4.11.1",
+    "lodash": "^3.0.0",
+    "mongodb": "^1.4.29"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/htet-waiyan/pichub.git"
+  },
+  "keywords": [
+    "pichub",
+    "imgdb",
+    "photo"
+  ],
+  "author": "Weiyan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/htet-waiyan/pichub/issues"
+  },
+  "homepage": "https://github.com/htet-waiyan/pichub"
+}

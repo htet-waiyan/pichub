@@ -1,0 +1,15 @@
+module.exports={
+  DB:{
+    connection:'mongodb://localhost:27017/pichub-dev',
+    dbname:'pichub-dev',
+    port:'',
+    ip:'',
+    host:''
+  },
+  ERROR:{
+    conn_err:10001,
+    col_err:10002,
+    col_not_found:10003,
+    insert_err:10004
+  }
+}

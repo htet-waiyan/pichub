@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pichub">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.min.css">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" ng-controller="LoginCtrl as ctrl">
+        <div class="col-xs-12 col-md-4">
+          <form action="/api/login" method="POST">
+            <div class="form-group">
+              <h4>Login</h4>
+            </div>
+            <div class="form-group">
+              <input type="email" ng-model="formData.email" class="form-control" id="email" name="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <input type="password" ng-model="formData.passwd" class="form-control" id="passwd" name="passwd" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+              <button type="button" ng-click="ctrl.submit()" class="btn btn-primary">Login</button>
+              <span><a href="#">Forget password?</a></span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="row" ng-controller="SignUpCtrl as ctrl">
+        <div class="col-xs-12 col-md-4">
+          <form action="/api/register" method="POST">
+            <div class="form-group row">
+              <div class="col-xs-12"><h4>New to PicHub? Signup</h4></div>
+            </div>
+            <div class="form-group">
+              <input type="text" ng-model="formData.fullname" class="form-control" id="fullname" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+              <input type="email" ng-model="formData.email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <input type="password" ng-model="formData.passwd" class="form-control" id="email" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+              <button type="button" ng-click="ctrl.submit()" class="btn btn-primary">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/app/app.js"></script>
+  </body>

@@ -1,0 +1,46 @@
+user = > thread => photos
+
+user={
+  *user_id:"",
+  name:"",
+  thunbnail:"",
+  credential:{
+    email:"",
+    password:""
+  },
+  reg_date:"",
+  thread:{
+    thread_own:[{id:"",name:""}],
+    thread_followed:[{id:"",name:""}]
+  }
+}
+
+thread={
+  *id:"",
+  *name:"",
+  tag:[],
+  creation_date:"",
+  description:"",
+  photos:[],
+  contributor:[{id:"",name:"",thumbnail:""}],
+  owner:"{id:"",name:"",thumbnail:""}
+}
+
+photos:{
+    id:"",
+    filename:"",
+    path:"",
+    caption:"",
+    generated_fname:"",
+    upload_datetime:"",
+    likes:"",
+    comments:{
+      id:"",
+      text:"",
+      datetime:"",
+      by:{
+        id:"",
+        name:""
+      }
+    }
+  }
