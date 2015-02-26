@@ -1,4 +1,5 @@
 var MongoClient=require('mongodb').MongoClient;
+var ObjectId=require('mongodb').ObjectID;
 var db=require('./../../config/setting').DB;
 var error=require('./../../config/setting').ERROR;
 
@@ -63,6 +64,25 @@ CommonDB.prototype.insert=function(data,option,callback){
       return callback(null,result[0]);
     })
   });
+}
+
+CommonDB.prototype.find=function(id,callback){
+  console.log("Trace : CommonDB.find");
+  this.getCollection(function(err,col){
+    if(err){
+      err.code=error.col_err;
+      return callback(err,null);
+    }
+
+    col.find({_id:ObjectId(id)}).toArray(function(err,docs){
+      if(err){
+        err.code=error.col_not_found;
+        return callback(err,null);
+      }
+
+      return callback(null,docs[0]);
+    })
+  })
 }
 
 CommonDB.prototype.close=function(db){
