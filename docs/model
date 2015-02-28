@@ -22,8 +22,9 @@ thread={
   creation_date:"",
   description:"",
   photos:[],
-  contributor:[{id:"",name:"",thumbnail:""}],
-  owner:"{id:"",name:"",thumbnail:""}
+  mode:"private"||"public",
+  contributor:["",""],
+  owner:""
 }
 
 photos:{

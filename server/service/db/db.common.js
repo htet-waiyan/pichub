@@ -11,7 +11,12 @@ var connect=function(callback){
   console.log("Trace : connect");
   console.log("Connection String : "+_connection);
   MongoClient.connect(_connection,{uri_decode_auth:true},function(err,db){
-    callback(err,db);
+    if(err){
+      err.code=error.conn_err;
+      return callback(err,null);
+    }
+
+    return callback(null,db);
   });
 }
 
@@ -26,20 +31,17 @@ CommonDB.prototype.getCollection=function(callback){
 
   /*** Connecting MongoDB Server ***/
   connect(function(err,db){
-    if(err){
-      console.log("Connection Error");
-      err.code=error.conn_err;
+    if(err)
       return callback(err,null);
-    }
 
     /*** Getting collection with given name ***/
     db.collection(colName,option,function(err,col){
     if(err){
       err.code=error.col_err;
-      return callback(err,null);
+      return callback(err,null,null);
     }
 
-    return callback(null,col);
+    return callback(null,col,db);
     })
   })
 }
@@ -49,11 +51,9 @@ CommonDB.prototype.insert=function(data,option,callback){
   var _option=option||this.colOption;
   var colName=this.colName;
 
-  this.getCollection(function(err,col){
-    if(err){
-      err.code=error.col_err;
+  this.getCollection(function(err,col,db){
+    if(err)
       return callback(err,null);
-    }
 
     col.insert(data,_option,function(err,result){
       if(err){
@@ -61,14 +61,34 @@ CommonDB.prototype.insert=function(data,option,callback){
         return callback(err,null);
       }
 
+      db.close();
       return callback(null,result[0]);
     })
   });
 }
 
+CommonDB.prototype.update=function(updatedData,option,callback){
+  console.log("Trace : CommonDb.update");
+
+  this.getCollection(function(err,col,db){
+    if(err)
+      return callback(err,null);
+
+    col.update({"_id":ObjectId(updateData._id)},{"$set":updatedData},option,function(err,dbData){
+      if(err){
+        err.code=error.upsert_err;
+        return callback(err,null);
+      }
+
+      db.close();
+      return callback(null,dbData);
+    });
+  })
+}
+
 CommonDB.prototype.find=function(id,callback){
   console.log("Trace : CommonDB.find");
-  this.getCollection(function(err,col){
+  this.getCollection(function(err,col,db){
     if(err){
       err.code=error.col_err;
       return callback(err,null);
@@ -80,6 +100,7 @@ CommonDB.prototype.find=function(id,callback){
         return callback(err,null);
       }
 
+      db.close();
       return callback(null,docs[0]);
     })
   })

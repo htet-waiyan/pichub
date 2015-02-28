@@ -10,6 +10,7 @@ module.exports={
     conn_err:10001,
     col_err:10002,
     col_not_found:10003,
-    insert_err:10004
+    insert_err:10004,
+    upsert_err:10005
   }
 }

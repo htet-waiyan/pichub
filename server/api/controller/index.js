@@ -1,4 +1,5 @@
 var admin=require('./../../service/admin/');
+var thread=require('./../../service/thread');
 var model=require('./../../model/');
 
 exports.handleLogin=function(req,res,next){
@@ -23,7 +24,6 @@ exports.handleLogin=function(req,res,next){
 
 exports.handleSignUp=function(req,res,next){
   console.log("Trace : handleSingup");
-  console.log(req.body.fullname+" "+req.body.email+" "+req.body.passwd);
   var user=model.initUser(req.body.fullname,req.body.email,req.body.passwd);
   admin.signUpUser(user,function(err,dbUser){
     if(err && err.code>=10001 && err.code<=10004){
@@ -32,5 +32,17 @@ exports.handleSignUp=function(req,res,next){
 
     res.status(200);
     res.end(JSON.stringify(dbUser));
+  })
+}
+
+exports.handleThreadCreation=function(req,res,next){
+  console.log("Trace : handleThreadCreation");
+  thread.createThread(req.body._userid,req.body.thread,function(err,user,thread){
+    if(err && err.code>=10001 && err.code<=10004){
+      return next(err);
+    }
+
+    res.status(200);
+    res.end(JSON.stringify(thread));
   })
 }

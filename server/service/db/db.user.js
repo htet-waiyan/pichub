@@ -35,15 +35,34 @@ UserDB.prototype.getUserByEmailPasswd=function(email,passwd,callback){
   })
 }
 
+UserDB.prototype.findById=function(id,callback){
+  console.log("Trace : UserDB.findById");
+  this.find(id,function(err,dbUser){
+    if(err)
+      return callback(err,null);
+
+    return callback(null,dbUser);
+  })
+}
+
 UserDB.prototype.createUser=function(user,callback){
   console.log("Trace : UserDB.createUser");
   this.insert(user,{w:1},function(err,dbUser){
-    if(err){
-      err.code=error.insert_err;
+    if(err)
       return callback(err,null);
-    }
+
     return callback(null,dbUser);
   });
+}
+
+UserDB.prototype.updateUser=function(updatedUser,callback){
+  console.log("Trace : UserDB.updateUser");
+  this.update(updatedUser,{w:1},function(err,dbUser){
+    if(err)
+      return callback(err,null);
+
+    return callback(null,dbUser);
+  })
 }
 
 module.exports=UserDB;

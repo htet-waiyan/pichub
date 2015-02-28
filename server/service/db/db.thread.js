@@ -22,3 +22,5 @@ ThreadDB.prototype.createThread=function(thread,callback){
     return callback(null,dbThread);
   })
 }
+
+module.exports=ThreadDB;
