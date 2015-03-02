@@ -15,8 +15,8 @@ module.exports=function(app){
   app.set('root',absPath);
 
   /*** middleware configuration ***/
-  app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended:true}));
+  app.use(bodyParser.json());
 
   /*** serve static file - js/css/image  ***/
   app.use(express.static(path.join(absPath,'/bower_components')));

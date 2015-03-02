@@ -13,7 +13,8 @@ function ThreadDB(){
 util.inherits(ThreadDB,CommonDB);
 
 ThreadDB.prototype.createThread=function(thread,callback){
-  this.insert(function(err,dbThread){
+  console.log("Trace : createThread");
+  this.insert(thread,{w:1},function(err,dbThread){
     if(err){
       err.code=error.insert_err;
       return callback(err,null);

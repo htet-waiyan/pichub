@@ -32,7 +32,7 @@ CommonDB.prototype.getCollection=function(callback){
   /*** Connecting MongoDB Server ***/
   connect(function(err,db){
     if(err)
-      return callback(err,null);
+      return callback(err,null,null);
 
     /*** Getting collection with given name ***/
     db.collection(colName,option,function(err,col){

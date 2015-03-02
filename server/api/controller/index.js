@@ -37,7 +37,8 @@ exports.handleSignUp=function(req,res,next){
 
 exports.handleThreadCreation=function(req,res,next){
   console.log("Trace : handleThreadCreation");
-  thread.createThread(req.body._userid,req.body.thread,function(err,user,thread){
+  var threadCreated=model.initThread(req.body.name,req.body.desc,req.body.mode,"54e71c68e269c456996474f7");
+  thread.createThread(threadCreated,function(err,thread){
     if(err && err.code>=10001 && err.code<=10004){
       return next(err);
     }

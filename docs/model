@@ -9,10 +9,6 @@ user={
     password:""
   },
   reg_date:"",
-  thread:{
-    thread_own:[{id:"",name:""}],
-    thread_followed:[{id:"",name:""}]
-  }
 }
 
 thread={
@@ -23,8 +19,8 @@ thread={
   description:"",
   photos:[],
   mode:"private"||"public",
-  contributor:["",""],
-  owner:""
+  contributor:[{_id:"",datetime:""}],
+  owner:{_id:"",datetime:""}
 }
 
 photos:{
