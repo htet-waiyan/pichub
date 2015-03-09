@@ -1,7 +1,7 @@
 (function(w){
   var pichubApp=w.pichubApp;
 
-  var SignupService=function($http,$q){
+  var AdminService=function($http,$q){
     this.doSignup=function(user){
       var defered=$q.defer();
 
@@ -15,10 +15,26 @@
         defered.resolve(data);
       })
 
-      return defered.promose;
+      return defered.promise;
+    }
+
+    this.doLogin=function(credential){
+      var defered=$q.defer();
+
+      $http({
+        url:'/api/login',
+        method:'POST',
+        data:JSON.stringify(credential)
+      }).success(function(data,status,config){
+        defered.resolve(data);
+      }).error(function(data,status,config){
+        defered.reject(data);
+      })
+
+      return defered.promise;
     }
   }
 
-  pichubApp.service('signupService',['$http','$q',SignupService]);
+  pichubApp.service('adminService',['$http','$q',AdminService]);
 
 })(window);

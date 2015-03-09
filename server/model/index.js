@@ -1,4 +1,5 @@
 var dateUtil=require('./../util/util.date');
+var uploadPath=require('./../config/setting').UPLOAD_PATH;
 
 exports.initUser=function(_fullname,_email,_passwd){
   return{
@@ -20,6 +21,21 @@ exports.initThread=function(_name,_desc,_mode,_ownerId){
     owner:{
       id:_ownerId,
       datetime:dateUtil.todayAsString()
+    }
+  }
+}
+
+exports.initPhoto=function(_filename,_caption,threadId,threadName){
+  return{
+    filename:_filename,
+    path:uploadPath,
+    caption:_caption,
+    generated_fname:"",
+    uploadTime:"",
+    likes:0,
+    threadIn:{
+      id:threadId,
+      name:threadName
     }
   }
 }

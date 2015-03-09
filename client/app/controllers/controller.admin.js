@@ -1,17 +1,36 @@
 (function(w){
   var pichubApp=w.pichubApp;
 
-  var SignupController=function($scope,$signupService){
+  var SignupController=function($scope,$window,$adminService){
     $scope.formData={};
     this.submit=function(){
-      $signupService.doSignup($scope.formData)
-        .then(function(user){
+      $adminService.doSignup($scope.formData)
+        .then(function(resp){
           //do something with user
+          console.log("Register Successful");
+          $scope.successMsg=resp.msg;
         },function(err){
           //do something with error
+          $scope.errMsg=err.msg;
         })
     }
   }
 
-  pichubApp.controller('signupCtrl',['$scope','signupService',SignupController]);
+  var LoginController=function($scope,$window,$adminService){
+    $scope.formData={};
+
+    this.submit=function(){
+      $adminService.doLogin($scope.formData)
+        .then(function(user){
+          console.log("Login Successsful");
+          $window.location.href="/feed";
+        },function(err){
+          console.log("Login failed");
+          $scope.errMsg=err.msg;
+        })
+    }
+  }
+
+  pichubApp.controller('SignupCtrl',['$scope','$window','adminService',SignupController]);
+  pichubApp.controller('LoginCtrl',['$scope','$window','adminService',LoginController]);
 })(window);

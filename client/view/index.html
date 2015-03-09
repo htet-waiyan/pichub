@@ -4,16 +4,57 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/normalize.css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/view/styles/common.css">
+    <link rel="stylesheet" type="text/css" href="/view/styles/home.css">
     <title></title>
   </head>
   <body>
-    <div class="container">
-      <div class="row" ng-controller="LoginCtrl as ctrl">
-        <div class="col-xs-12 col-md-4">
+    <div class="container full-height">
+      <div class="layout full-height">
+        <section class="panel m-width-100 d-width-50" id="left-pane" ng-controller="LoginCtrl as ctrl">
+          <main>
+            <form name="form" novalidate>
+              <div class="form-layout error-pane" ng-show="errMsg">{{errMsg}}</div>
+              <div class="form-layout">
+                <input type="email" ng-model="formData.email" name="email" class="control" placeholder="Enter email"/>
+              </div>
+              <div class="form-layout"><input type="password" ng-model="formData.passwd" name="passwd" class="control" placeholder="Enter password"></div>
+              <div class="form-layout"><button type="button" ng-click="ctrl.submit()" class="control btn btn-login">Login</button></div>
+              <div class="form-layout"><a href="#">Forget password?</a></div>
+              <div class="form-layout"><span>Haven't has an account? Register now!</span></div>
+            </form>
+          </main>
+        </section>
+        <section class="panel m-width-100 d-width-50" id="right-pane">
+          <main>
+            <form name="signupForm" novalidate>
+              <div class="form-layout">
+                <span class="error-text" ng-show="!signupForm.fullname.$pristine && signupForm.fullname.$error.required">Fullname is required.</span>
+                <input type="text" name="fullname" class="control signup-control" placeholder="Enter fullname"/>
+              </div>
+              <div class="form-layout">
+                <span class="error-text" ng-show="!signupForm.email.$pristine && signupForm.email.$error.required">Email is required.</span>
+                <span class="error-text" ng-show="!signupForm.email.$pristine && signupForm.email.$invalid">Invalid email address.</span>
+                <input type="email" name="email" class="control signup-control" placeholder="Enter email"/>
+              </div>
+              <div class="form-layout">
+                <span class="error-text" ng-show="!signupForm.passwd.$pristine && signupForm.passwd.$error.required">Password is required.</span>
+                <input type="password" name="passwd" class="control signup-control" placeholder="Enter password">
+              </div>
+              <div class="form-layout"><button type="submit" class="control btn btn-signup">Register</button></div>
+              <div class="form-layout"><span>Already have an account? Login Me!</span></div>
+            </form>
+          </main>
+        </section>
+      </div>
+    </div>
+    <!--<div class="container-fluid">
+      <div class="row" id="content-section">
+        <div class="col-xs-12 col-md-6 form-section login-section">
           <form action="/api/login" method="POST">
             <div class="form-group">
-              <h4>Login</h4>
+              <div class="col-xs-12"><h4>Login</h4></div>
             </div>
             <div class="form-group">
               <input type="email" ng-model="formData.email" class="form-control" id="email" name="email" placeholder="Enter email">
@@ -22,35 +63,35 @@
               <input type="password" ng-model="formData.passwd" class="form-control" id="passwd" name="passwd" placeholder="Enter password">
             </div>
             <div class="form-group">
-              <button type="button" ng-click="ctrl.submit()" class="btn btn-primary">Login</button>
+              <button type="button" ng-click="ctrl.submit()" class="btn btn-login form-control">Login</button>
               <span><a href="#">Forget password?</a></span>
             </div>
           </form>
         </div>
-      </div>
-      <div class="row" ng-controller="SignUpCtrl as ctrl">
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-6 form-section signup-section">
           <form action="/api/register" method="POST">
             <div class="form-group row">
               <div class="col-xs-12"><h4>New to PicHub? Signup</h4></div>
             </div>
             <div class="form-group">
-              <input type="text" ng-model="formData.fullname" class="form-control" id="fullname" placeholder="Enter your full name">
+              <input type="text" ng-model="formData.fullname" id="fullname" class="form-control" placeholder="Enter your full name">
             </div>
             <div class="form-group">
-              <input type="email" ng-model="formData.email" class="form-control" id="email" placeholder="Enter email">
+              <input type="email" ng-model="formData.email" id="email" class="form-control" placeholder="Enter email">
             </div>
             <div class="form-group">
-              <input type="password" ng-model="formData.passwd" class="form-control" id="email" placeholder="Enter password">
+              <input type="password" ng-model="formData.passwd" id="email" class="form-control" placeholder="Enter password">
             </div>
             <div class="form-group">
-              <button type="button" ng-click="ctrl.submit()" class="btn btn-primary">Register</button>
+              <button type="button" ng-click="ctrl.submit()" class="btn btn-signup form-control">Register</button>
             </div>
           </form>
         </div>
       </div>
-    </div>
+    </div>-->
 
     <script type="text/javascript" src="/angular/angular.min.js"></script>
-    <script type="text/javascript" src="/app/app.js"></script>
+    <script type="text/javascript" src="/app/main.js"></script>
+    <script type="text/javascript" src="/app/service/service.admin.js"></script>
+    <script type="text/javascript" src="/app/controllers/controller.admin.js"></script>
   </body>

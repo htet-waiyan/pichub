@@ -20,6 +20,7 @@ thread={
   photos:[],
   mode:"private"||"public",
   contributor:[{_id:"",datetime:""}],
+  subscriber:[{_id:"",datetime:""}],
   owner:{_id:"",datetime:""}
 }
 
@@ -31,7 +32,7 @@ photos:{
     generated_fname:"",
     upload_datetime:"",
     likes:"",
-    comments:{
+    comments:[{
       id:"",
       text:"",
       datetime:"",
@@ -39,5 +40,7 @@ photos:{
         id:"",
         name:""
       }
-    }
+    }],
+    tag:[{id:"",text:""}],
+    threadIn:{_id:"",name:""}
   }

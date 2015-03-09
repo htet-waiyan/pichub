@@ -1,0 +1,26 @@
+html,body{margin: 0;padding:0;width: 100%;height: 100%;}
+
+#left-pane{height: 100%;background-color: #4AEDA8;font-size: 16px;}
+#right-pane{height: 100%;background-color: #3D3D3D;font-size: 16px;}
+#login-section,#signup-section{max-width: 60%;height:100%;display: block;margin-left: auto;margin-right: auto;}
+@media screen and (min-width:768px){
+  #login-section,#signup-section{margin-top: 25%;}
+  .panel main{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30%;
+  }
+}
+div.form-layout:last-of-type{
+  margin-top: 30px;
+  text-align: center;
+  font-size: 18px;
+}
+#left-pane div.form-layout:last-of-type{color: #777;}
+#right-pane div.form-layout:last-of-type{color: #fff;}
+
+
+.signup-control{background-color: #666;}
+.btn-login{background-color: #FFD032; font-size: 14px; color:#666;}
+.btn-signup{background-color: #FF2A60; font-size: 14px; color:#fff;}

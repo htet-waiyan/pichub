@@ -24,12 +24,11 @@ UserDB.prototype.getUserByEmailPasswd=function(email,passwd,callback){
       return callback(err,null);
     }
 
-    col.find({email:email,passwd:passwd}).toArray(function(err,docs){
+    col.find({credentials:{email:email,passwd:passwd}}).toArray(function(err,docs){
       if(err){
         err.code=error.col_not_found;
         return callback(err,null);
       }
-      console.log(docs[0].email+" "+docs[0].passwd);
       return callback(null,docs[0]);
     })
   })

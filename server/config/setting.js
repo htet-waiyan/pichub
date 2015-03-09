@@ -12,5 +12,6 @@ module.exports={
     col_not_found:10003,
     insert_err:10004,
     upsert_err:10005
-  }
+  },
+  UPLOAD_PATH:''
 }

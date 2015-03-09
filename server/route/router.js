@@ -15,6 +15,7 @@ module.exports=function(app){
   app.route('/feed')
       .get(function(req,res,next){
         res.status(200);
+        res.end('<h3>Photo feeds</h3>')
       })
 
   app.use(function(err,req,res,next){
