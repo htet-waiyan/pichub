@@ -1,0 +1,11 @@
+Data Presentation and UI/UX flow of Feed and User Profile
+==========================================================
+
+Entities where data are retrieved to be populated on Feed
+
+- Thread user created when some subscriber contribute to it
+- Thread user subscribed when subscriber or creator contribute to it
+- Activities - upload photo
+
+- photos from threads that the user created/subscribed
+- photos with uploader, datetime, thread name

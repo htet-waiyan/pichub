@@ -1,19 +1,21 @@
 'use strict'
 /*** All routers defines here ***/
 
+var controller=require('./../api/controller/');
+
 module.exports=function(app){
   /*** Router for api ***/
   app.use('/api',require('./../api/api.routes'));
 
   /*** Router for pages ***/
   app.route('/')
-      .get(function(req,res,next){
+      .get(controller.checkLogin,function(req,res,next){
           res.status(200);
           res.sendFile('index.html',app.get('routePath'));
       });
 
   app.route('/feed')
-      .get(function(req,res,next){
+      .get(controller.checkSession,function(req,res,next){
         res.status(200);
         res.end('<h3>Photo feeds</h3>')
       })

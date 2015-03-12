@@ -21,6 +21,6 @@ div.form-layout:last-of-type{
 #right-pane div.form-layout:last-of-type{color: #fff;}
 
 
-.signup-control{background-color: #666;}
+.signup-control{background-color: #666; color:#fff;}
 .btn-login{background-color: #FFD032; font-size: 14px; color:#666;}
 .btn-signup{background-color: #FF2A60; font-size: 14px; color:#fff;}

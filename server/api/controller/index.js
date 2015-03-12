@@ -2,6 +2,35 @@ var admin=require('./../../service/admin/');
 var thread=require('./../../service/thread');
 var model=require('./../../model/');
 
+/*** Security And Authorization Implementation ***/
+exports.checkSession=function(req,res,next){
+  console.log("controller : checkSession");
+  if(req.session && req.session.isAuthenticated)
+    return next();
+
+  console.log("User isn't authenticated yet. Redirect to login");
+  res.redirect('/');
+}
+
+exports.checkLogin=function(req,res,next){
+  console.log("controller : checkLogin");
+  /** user hasn't been authenticated. redirect to home page **/
+  if(!req.session.isAuthenticated)
+    return next();
+
+  res.redirect('/feed');
+}
+
+exports.secureAccess=function(req,res,next){
+  if(!req.session.isAuthenticated)
+    return next();
+
+  res.status(403);
+  res.end(JSON.stringify({msg:"Unathorized Access"}));
+}
+
+/*** End of Security and Authorization Implementation ***/
+
 exports.handleLogin=function(req,res,next){
   console.log("Trace : handleLogin");
   console.log(JSON.stringify(req.body));
@@ -17,6 +46,9 @@ exports.handleLogin=function(req,res,next){
     }
     /*** user found. authentication succeed. redirect to feed ***/
     else{
+      req.session.isAuthenticated=true;
+      req.session.userId=user._id;
+
       res.status(302);
       res.redirect('/feed');
     }
