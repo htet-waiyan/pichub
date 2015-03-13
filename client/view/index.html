@@ -29,6 +29,7 @@
         <section class="panel m-width-100 d-width-50" id="right-pane" ng-controller="SignupCtrl as ctrl">
           <main>
             <form name="signupForm" novalidate>
+              <div class="form-layout info-pane" ng-show="successMsg">{{successMsg}}</div>
               <!-- Full name -->
               <div class="form-layout">
                 <span class="error-text" ng-show="!signupForm.fullname.$pristine && signupForm.fullname.$error.required">Fullname is required.</span>

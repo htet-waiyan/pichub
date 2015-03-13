@@ -3,6 +3,7 @@ user = > thread => photos
 user={
   *user_id:"",
   name:"",
+  username:"",
   thunbnail:"",
   credential:{
     email:"",

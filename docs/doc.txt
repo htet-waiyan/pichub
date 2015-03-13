@@ -3,9 +3,12 @@ Data Presentation and UI/UX flow of Feed and User Profile
 
 Entities where data are retrieved to be populated on Feed
 
-- Thread user created when some subscriber contribute to it
-- Thread user subscribed when subscriber or creator contribute to it
-- Activities - upload photo
-
 - photos from threads that the user created/subscribed
 - photos with uploader, datetime, thread name
+
+Entities where data are retireved to be populated on Profile
+
+- Personal info to be edited
+- number of followings and followers
+- Notification when someone follows you, your own thread was subscribed or contributed
+- Thread created and Thread Subscribed
