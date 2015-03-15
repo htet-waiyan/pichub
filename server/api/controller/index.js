@@ -57,7 +57,7 @@ exports.handleLogin=function(req,res,next){
 
 exports.handleSignUp=function(req,res,next){
   console.log("Trace : handleSingup");
-  var user=model.initUser(req.body.fullname,req.body.email,req.body.passwd);
+  var user=model.initUser(req.body.username,req.body.email,req.body.passwd);
   admin.signUpUser(user,function(err,dbUser){
     if(err && err.code>=10001 && err.code<=10004){
       return next(err);

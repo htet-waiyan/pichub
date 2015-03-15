@@ -1,9 +1,9 @@
 var dateUtil=require('./../util/util.date');
 var uploadPath=require('./../config/setting').UPLOAD_PATH;
 
-exports.initUser=function(_fullname,_email,_passwd){
+exports.initUser=function(_username,_email,_passwd){
   return{
-    fullname:_fullname,
+    username:_username,
     thumbnail:null,
     credentials:{
       email:_email,

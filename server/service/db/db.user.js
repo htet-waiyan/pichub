@@ -10,7 +10,6 @@ var _user="user";
 function UserDB(){
   this.colOption={w:1,strict:true};
   this.colName="user";
-  //CommonDB.call(this,colOption,colName);
 }
 
 /*** Inheirts from CommonDB getting common methods ***/
@@ -26,7 +25,6 @@ UserDB.prototype.getUserByEmailPasswd=function(email,passwd,callback){
       if(err)
         return callback(err,null);
 
-      db.close();
       return callback(null,docs[0]);
     })
   })
@@ -38,7 +36,6 @@ UserDB.prototype.findById=function(id,callback){
     if(err)
       return callback(err,null);
 
-    db.close();
     return callback(null,dbUser);
   })
 }
@@ -47,11 +44,12 @@ UserDB.prototype.createUser=function(user,callback){
   console.log("Trace : UserDB.createUser");
   var createIndex=this.createIndex;
   this.insert(user,{w:1},function(err,dbUser,db,col){
-    if(err)
+    if(err){
       return callback(err,null);
+    }
 
-    createIndex(db,col,{"username":dbUser.username,"credentials.email":dbUser.credentials.email},"username_email_unique_idx");
-    db.close();
+    createIndex(db,col,{"username":1},"username_unique_idx");
+    createIndex(db,col,{"credentials.email":1},"email_unique_idx");
     return callback(null,dbUser);
   });
 }
@@ -62,7 +60,6 @@ UserDB.prototype.updateUser=function(updatedUser,callback){
     if(err)
       return callback(err,null);
 
-    db.close();
     return callback(null,dbUser);
   })
 }

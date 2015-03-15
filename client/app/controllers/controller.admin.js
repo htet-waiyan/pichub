@@ -7,7 +7,6 @@
       $adminService.doSignup($scope.formData)
         .then(function(resp){
           //do something with user
-          console.log("Register Successful");
           $scope.successMsg=resp.msg;
         },function(err){
           //do something with error

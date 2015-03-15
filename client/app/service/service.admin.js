@@ -12,7 +12,7 @@
       }).success(function(data,status,config){
         defered.resolve(data);
       }).error(function(data,status,config){
-        defered.resolve(data);
+        defered.reject(data);
       })
 
       return defered.promise;
