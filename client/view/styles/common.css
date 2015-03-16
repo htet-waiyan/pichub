@@ -21,8 +21,7 @@ a{text-decoration: none;}
 .bgFooter{background-color: #A6A9AD;}
 .color-bindez{color:#4B8024;}
 
-.bindez-menubar{margin: 0;width: 100%;height: auto;overflow: hidden;}
-.bindez-background{background-color: #619C33;}
+.menubar{margin: 0;width: 100%;height: auto;overflow: hidden;}
 .menu{width: auto;height: auto;display: inline-block;vertical-align: top;position: relative; margin-right: 15px; margin-left: 15px; margin-top: 10px;margin-bottom: 10px;}
 .bindez-logo{width: 60px; height: 55px; display: block;}/* responsive image */
 @media screen and (max-width: 768px){

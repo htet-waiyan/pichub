@@ -18,6 +18,12 @@ module.exports=function(app){
       .get(controller.checkSession,function(req,res,next){
         res.status(200);
         res.end('<h3>Photo feeds</h3>')
+      });
+
+  app.route('/profile')
+      .get(function(req,res,next){
+        res.status(200);
+        res.sendFile('main.html',app.get('routePath'));
       })
 
   app.use(function(err,req,res,next){
