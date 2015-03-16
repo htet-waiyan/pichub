@@ -58,9 +58,14 @@ exports.handleLogin=function(req,res,next){
 exports.handleSignUp=function(req,res,next){
   console.log("Trace : handleSingup");
   var user=model.initUser(req.body.username,req.body.email,req.body.passwd);
-  admin.signUpUser(user,function(err,dbUser){
-    if(err && err.code>=10001 && err.code<=10004){
+  admin.signUpUser(user,function(err,dbUser,dupUsername,dupEmail){
+    if(err){
       return next(err);
+    }
+
+    if(dupUsername || dupEmail){
+      req.dupUsername=dupUsername;req.dupEmail=dupEmail;
+      return next();
     }
 
     res.status(200);
@@ -72,7 +77,7 @@ exports.handleThreadCreation=function(req,res,next){
   console.log("Trace : handleThreadCreation");
   var threadCreated=model.initThread(req.body.name,req.body.desc,req.body.mode,"54e71c68e269c456996474f7"); //userid should come from session
   thread.createThread(threadCreated,function(err,thread){
-    if(err && err.code>=10001 && err.code<=10004){
+    if(err){
       return next(err);
     }
 

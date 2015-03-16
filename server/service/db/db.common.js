@@ -1,6 +1,5 @@
 var MongoClient=require('mongodb').MongoClient;
 var ObjectId=require('mongodb').ObjectID;
-var error=require('./../../config/setting').ERROR;
 var handleError=require('./../error/');
 var dbConnecitonFactory=require('./db.confactory').getDBConFactory();
 
@@ -16,7 +15,7 @@ CommonDB.prototype.getCollection=function(callback){
   /*** Getting collection with given name ***/
   db.collection(colName,option,function(err,col){
     if(err)
-      return handleError(err,error.col_err,callback);
+      return callback(err,null,null);
 
     return callback(null,col,db);
   })
@@ -33,9 +32,8 @@ CommonDB.prototype.insert=function(data,option,callback){
 
     col.insert(data,_option,function(err,result){
       if(err){
-        console.log(err.code);
-        console.log(err);
-        return handleError(err,error.insert_err,callback);
+        console.log(err.err);
+        return callback(err,null,null,null);
       }
 
       return callback(null,result[0],db,col);
@@ -48,13 +46,13 @@ CommonDB.prototype.update=function(updatedData,option,callback){
 
   this.getCollection(function(err,col,db){
     if(err)
-      return callback(err,null,null,null);
+      return callback(err,null);
 
     col.update({"_id":ObjectId(updateData._id)},{"$set":updatedData},option,function(err,dbData){
       if(err)
-        return handleError(err,error.upsert_err,callback);
+        return callback(err,null);
 
-      return callback(null,dbData,db,col);
+      return callback(null,dbData);
     });
   })
 }
@@ -67,9 +65,9 @@ CommonDB.prototype.find=function(id,callback){
 
     col.find({_id:ObjectId(id)}).toArray(function(err,docs){
       if(err)
-        return handleError(err,error.col_not_found,callback);
+        return callback(err,null);
 
-      return callback(null,docs[0],db,col);
+      return callback(null,docs[0]);
     })
   })
 }

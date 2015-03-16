@@ -4,14 +4,11 @@ module.exports={
     dbname:'pichub-dev',
     port:'',
     ip:'',
-    host:''
-  },
-  ERROR:{
-    conn_err:10001,
-    col_err:10002,
-    col_not_found:10003,
-    insert_err:10004,
-    upsert_err:10005
+    host:'',
+    index:{
+      unique_email:'email_unique_idx',
+      unique_username:'username_unique_idx'
+    }
   },
   UPLOAD_PATH:''
 }
