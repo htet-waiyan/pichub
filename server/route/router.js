@@ -17,8 +17,14 @@ module.exports=function(app){
   app.route('/feed')
       .get(controller.checkSession,function(req,res,next){
         res.status(200);
-        res.end('<h3>Photo feeds</h3>')
+        res.sendFile('main.html',app.get('routePath'));
       });
+
+  app.route('/feed/content')
+      .get(controller.checkSession,function(req,res,next){
+        res.status(200);
+        res.sendFile('templates/feed/feed.html',app.get('routePath'));
+      })
 
   app.route('/profile')
       .get(function(req,res,next){

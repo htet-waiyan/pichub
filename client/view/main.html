@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="pichub">
+<html lang="en" ng-app="pichub" ng-app="pichub">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,13 +9,20 @@
     <link rel="stylesheet" type="text/css" href="/view/styles/common.css">
     <link rel="stylesheet" type="text/css" href="/view/styles/main.css">
   </head>
-  <body>
+  <body ng-controller="CommonController as cmCtrl">
     <div class="menubar pichub-menubar">
-      <nav class="menu"><a href="#">Pichub</a></nav>
+      <nav class="menu"><a href="/">Pichub</a></nav>
       <nav class="menu"><a href="#"><i class="fa fa-picture-o"></i> Discover</a></nav>
 
-      <nav class="menu pull-right"><i class="fa fa-cloud-upload"></i> Upload</nav>
-      <nav class="menu pull-right"><a href="#">__waiyan__</a></nav>
+      <nav class="menu pull-right"><a href="#"><i class="fa fa-cloud-upload"></i> Upload</a></nav>
+      <nav class="menu pull-right"><span class="thumbnail thumbnail-sm" style="background-color:red;"><img src="/asset/facepalm.jpg" class="thumbnail-image" /></span></nav>
     </div>
+    <div class="container" ng-view></div>
+
+    <script type="text/javascript" src="/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/app/main.js"></script>
+    <script type="text/javascript" src="/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="/app/config/index.js"></script>
+    <script type="text/javascript" src="/app/controllers/controller.common.js"></script>
   </body>
 </html>

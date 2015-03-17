@@ -1,3 +1,3 @@
 (function(w){
-  window.pichubApp=angular.module('pichub',[]);
+  window.pichubApp=angular.module('pichub',['ngRoute']);
 })(window)
