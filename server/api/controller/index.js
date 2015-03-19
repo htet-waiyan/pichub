@@ -36,7 +36,7 @@ exports.handleLogin=function(req,res,next){
   console.log(JSON.stringify(req.body));
   admin.authenLogin(req.body.email,req.body.passwd,function(err,user){
     /*** db error. return 500 internal server error ***/
-    if(err && err.code>=10001 && err.code<=10004)
+    if(err)
       return next(err);
 
     /*** user not found. authentication failed ***/

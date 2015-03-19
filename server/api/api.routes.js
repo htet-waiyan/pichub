@@ -6,6 +6,9 @@ var router=express.Router();
 
 router.post('/login',controller.handleLogin);
 router.post('/signup',controller.handleSignUp,bizErrHandler.handleSignupBizError);
+
 router.post('/thread/create',controller.checkSession,controller.handleThreadCreation);
+
+router.post('/profile/edit/save',controller.checkSession,controller.handleProfileUpdate);
 
 module.exports=router;

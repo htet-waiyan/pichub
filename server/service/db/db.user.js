@@ -3,6 +3,7 @@
 var util=require('util');
 var MongoClient=require('mongodb').MongoClient;
 var CommonDB=require('./db.common');
+var ObjectId=require('mongodb').ObjectID;
 
 var index=require('./../../config/setting').DB.index;
 var _user="user";
@@ -30,6 +31,21 @@ UserDB.prototype.getUserByEmailPasswd=function(email,passwd,callback){
 
       return callback(null,docs[0]);
     })
+  })
+}
+
+UserDB.prototype.getCurrentPassword=function(userId,callback){
+  console.log("Trace : UserDB.getCurrentPassword");
+  this.getCollection(function(err,col,db){
+    if(err)
+      return callback(err,null);
+
+    col.find({_id:ObjectId(userId)},{credentials:1}).next(err,credential){
+      if(err)
+        return callback(err,null);
+
+      return callback(null,credential.passwd);
+    }
   })
 }
 
