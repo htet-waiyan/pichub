@@ -1,0 +1,47 @@
+<main class="profile-edit">
+	<form novalidate name="editForm">
+		<div class="form-layout">
+			<input type="file" class="uploadControl" name="avatar" id="avatarUploader">
+		</div>
+		<div class="layout">
+			<section class="panel d-width-50 m-width-50">
+				<div class="form-layout">
+					<span><i class="fa fa-book"></i></span>
+					<span><input type="text" name="fullname" placeholder="Enter full name" class="profile-control" /></span>
+				</div>
+				<div class="form-layout">
+					<span><i class="fa fa-user"></i></span>
+					<span><input type="text" name="username" placeholder="Enter username" class="profile-control" /></span>
+				</div>
+				<div class="form-layout">
+					<span><i class="fa fa-venus-mars"></i></span>
+					<span><input type="radio" name="gender" value="M"/> Male</span>
+					<span><input type="radio" name="gender" value="F"/> Female</span>
+				</div>
+				<div class="form-layout">
+					<span><i class="fa fa-info-circle"></i></span>
+					<span><textarea class="profile-control" cols="25" rows="5"></textarea></span>
+				</div>
+			</section>
+
+			<section class="panel d-width-50 m-width-50">
+				<div class="form-layout">
+					<span><i class="fa fa-envelope"></i></span>
+					<span><input type="email" name="email" placeholder="Enter email" class="profile-control" /></span>
+				</div>
+				<div class="form-layout">
+					<span><i class="fa fa-lock"></i></span>
+					<span><input type="password" name="curPasswd" placeholder="Enter current password" class="profile-control" /></span>
+				</div>
+				<div class="form-layout">
+					<span><i class="fa fa-lock"></i></span>
+					<span><input type="password" name="newPasswd" placeholder="Enter new password" class="profile-control" /></span>
+				</div>
+				<div class="form-layout">
+					<span><button type="button" class="btn">Save</button></span>
+					<span><button type="button" class="btn">Cancel</button></span>
+				</div>
+			</section>
+		</div>
+	</form>
+</main>

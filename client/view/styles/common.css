@@ -1,9 +1,10 @@
 input{padding-top:8px;padding-bottom: 8px;}
-a{text-decoration: none;}
+a:link{text-decoration: none;}
 
 .put-right{float: right;}
 .pull-right{text-align: right;}
 .center-content{text-align: center;}
+.show{display: block !important;}
 @media screen and (max-width:768px){
   .m-center-content{text-align: center;}
 }
@@ -21,8 +22,12 @@ a{text-decoration: none;}
 .bgFooter{background-color: #A6A9AD;}
 .color-bindez{color:#4B8024;}
 
-.menubar{margin: 0;width: 100%;height: auto;overflow: hidden;}
+.menubar{margin: 0;width: 100%;height: auto;}
 .menu{width: auto;height: auto;display: inline-block;vertical-align: top;position: relative; margin-right: 15px; margin-left: 15px; margin-top: 10px;margin-bottom: 10px;}
+.dropmenu{width: 120px;height: auto;display: none;position: absolute;margin-top: 5px; box-shadow: 0px 0px 1px 1px #666;z-index: 10; background-color: #eee;}
+.dropmenu-item{display: block;padding:5px 15px 5px 15px; font-size: 13px;text-align: left;}
+.dropmenu-item a:link{max-height: 100%;max-width: 100%;display: block;}
+.dropmenu-item:hover,.dropmenu-item a:hover{text-decoration: underline;}
 .bindez-logo{width: 60px; height: 55px; display: block;}/* responsive image */
 @media screen and (max-width: 768px){
   .bindez-logo{width: 45px;height: 40px;}

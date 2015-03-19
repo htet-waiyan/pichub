@@ -6,5 +6,5 @@
     $scope.test="Feed"
   }
 
-  pichub.controller('FeedController',['$scope',CommonController]);
+  pichub.controller('FeedController',['$scope',FeedController]);
 })(window);

@@ -24,13 +24,19 @@ module.exports=function(app){
       .get(controller.checkSession,function(req,res,next){
         res.status(200);
         res.sendFile('templates/feed/feed.html',app.get('routePath'));
-      })
+      });
 
-  app.route('/profile')
+  app.route('/profile/content')
       .get(function(req,res,next){
         res.status(200);
-        res.sendFile('main.html',app.get('routePath'));
-      })
+        res.sendFile('templates/profile/content.html',app.get('routePath'));
+      });
+
+  app.route('/profile/edit')
+      .get(function(req,res,next){
+        res.status(200);
+        res.sendFile('templates/profile/edit.html',app.get('routePath'));
+      });
 
   app.use(function(err,req,res,next){
       console.log("Internal Server Error");

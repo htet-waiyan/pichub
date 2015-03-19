@@ -1,7 +1,7 @@
 (function(w){
   var pichub=w.pichubApp;
 
-  pichub.config(function($routeProvider){
+  pichub.config(function($routeProvider,$locationProvider){
     $routeProvider.when('/feed',{
       templateUrl:'/feed/content',
       controller:'FeedController',
@@ -10,10 +10,12 @@
       templateUrl:'/profile/content',
       controller:'ProfileContentController',
       controllerAs:'pcCtrl'
-    }).when('/edit',{
+    }).when('/profile/edit',{
       templateUrl:'/profile/edit',
-      controller:'ProfileEditController',
+      controller:'ProfileAdminController',
       controllerAs:'peCtrl'
     })
+
+    $locationProvider.html5Mode(true);
   })
 })(window)

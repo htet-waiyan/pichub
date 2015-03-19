@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="pichub" ng-app="pichub">
+<html lang="en" ng-app="pichub">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/feed"></base>
     <link rel="stylesheet" type="text/css" href="/normalize.css/normalize.css">
     <link rel="stylesheet" type="text/css" href="/asset/fa/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/view/styles/common.css">
     <link rel="stylesheet" type="text/css" href="/view/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/view/styles/profile/index.css">
   </head>
   <body ng-controller="CommonController as cmCtrl">
     <div class="menubar pichub-menubar">
@@ -15,14 +17,26 @@
       <nav class="menu"><a href="#"><i class="fa fa-picture-o"></i> Discover</a></nav>
 
       <nav class="menu pull-right"><a href="#"><i class="fa fa-cloud-upload"></i> Upload</a></nav>
-      <nav class="menu pull-right"><span class="thumbnail thumbnail-sm" style="background-color:red;"><img src="/asset/facepalm.jpg" class="thumbnail-image" /></span></nav>
+      <nav class="menu pull-right">
+        <span class="thumbnail thumbnail-sm" id="dropmenu-trigger" data-trigger="none-trigger"><img src="/asset/facepalm.jpg" class="thumbnail-image" /></span>
+        <div class="dropmenu" id="profile-dropmenu">
+          <span class="dropmenu-item"><a href="/profile">Profile</a></span>
+          <span class="dropmenu-item"><a href="/profile/edit">Edit Profile</a></span>
+          <span class="dropmenu-item"><a href="#">Logout</a></span>
+        </div>
+      </nav>
+      <nav class="menu pull-right"><i class="fa fa-bell noti"></i></nav>
     </div>
     <div class="container" ng-view></div>
 
+    <script type="text/javascript" src="/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="/angular/angular.min.js"></script>
     <script type="text/javascript" src="/app/main.js"></script>
     <script type="text/javascript" src="/angular-route/angular-route.min.js"></script>
-    <script type="text/javascript" src="/app/config/index.js"></script>
     <script type="text/javascript" src="/app/controllers/controller.common.js"></script>
+    <script type="text/javascript" src="/app/controllers/feed/controller.feed.js"></script>
+    <script type="text/javascript" src="/app/controllers/profile/controller.profile.js"></script>
+    <script type="text/javascript" src="/app/config/index.js"></script>
+    <script type="text/javascript" src="/view/js/dropmenu.js"></script>
   </body>
 </html>
