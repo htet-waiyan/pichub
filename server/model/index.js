@@ -10,6 +10,7 @@ exports.initUser=function(_username,_email,_passwd){
       passwd:_passwd, //encrypt the passwd
     },
     reg_date:dateUtil.todayAsString(),
+    newUser:true
   }
 }
 

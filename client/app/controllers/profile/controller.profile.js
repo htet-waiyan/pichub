@@ -5,11 +5,17 @@
 		$scope.test="profilecontentcontroller";
 	}
 
-	function ProfileAdminController($scope){
-		$scope.test="profileadmincontroller";
+	function ProfileAdminController($scope,profileService){
+		profileService.getUserPofileData()
+			.then(function(data){
+				console.log(data);
+				$scope.userPart=data;
+			},function(err){
+				console.log(err);
+			})
 	}
 
 	pichub
 		.controller('ProfileContentController',['$scope',ProfileContentController])
-		.controller('ProfileAdminController',['$scope',ProfileAdminController])
+		.controller('ProfileAdminController',['$scope','ProfileService',ProfileAdminController]);
 })(window)

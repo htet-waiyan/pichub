@@ -40,16 +40,17 @@ UserDB.prototype.getCurrentPassword=function(userId,callback){
     if(err)
       return callback(err,null);
 
-    col.find({_id:ObjectId(userId)},{credentials:1}).next(err,credential){
+    var cursor=col.find({_id:new ObjectId(userId)},{credentials:1});
+    cursor.toArray(function(err,arr){
       if(err)
         return callback(err,null);
 
-      return callback(null,credential.passwd);
-    }
+      return callback(null,arr[0].credentials.passwd);
+    })
   })
 }
 
-UserDB.prototype.findById=function(id,callback){
+UserDB.prototype.getUserById=function(id,callback){
   console.log("Trace : UserDB.findById");
   this.find(id,function(err,dbUser,db,col){
     if(err)

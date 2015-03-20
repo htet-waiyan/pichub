@@ -63,7 +63,7 @@ CommonDB.prototype.find=function(id,callback){
     if(err)
       return callback(err,null.null,null);
 
-    col.find({_id:ObjectId(id)}).toArray(function(err,docs){
+    col.find({_id:new ObjectId(id)},{_id:0}).toArray(function(err,docs){
       if(err)
         return callback(err,null);
 
