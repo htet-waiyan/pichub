@@ -1,4 +1,5 @@
 var admin=require('./../../service/admin/');
+var profileService=require('./../../service/profile/profile.index.js');
 var thread=require('./../../service/thread');
 var model=require('./../../model/');
 
@@ -49,8 +50,8 @@ exports.handleLogin=function(req,res,next){
       req.session.isAuthenticated=true;
       req.session.userId=user._id;
 
-      res.status(302);
-      res.redirect('/feed');
+      res.status(200);
+      res.end(JSON.stringify(user));
     }
   })
 }
@@ -90,3 +91,6 @@ exports.handlePhotoUpload=function(req,res,next){
   console.log("Trace : handleThreadCreation");
   var photoUpload=model.initPhoto("",req.body.caption,req.body.threadId,req.body.threadName);
 }
+
+/*** helper middlewares **/
+

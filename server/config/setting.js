@@ -10,5 +10,8 @@ module.exports={
       unique_username:'username_unique_idx'
     }
   },
-  UPLOAD_PATH:''
+  UPLOAD_PATH_UNIX:{
+    avator:"~/Workspace/FileSystem/pichub/avator/",
+    thread:"~/Workspace/FileSystem/pichub/threads/"
+  }
 }

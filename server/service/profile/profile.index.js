@@ -9,7 +9,7 @@ exports.updateUserProfile=function(fullname,username,gender,desc,email,curPasswd
       return callback(err,null);
 
     if(flag) // current password not same as the one in db
-      return callback(null,null); 
+      return callback(null,null);
 
     /*** current password is same as password defined ***/
     userDB.getUserById(userId,function(err,dbUser){
@@ -18,7 +18,7 @@ exports.updateUserProfile=function(fullname,username,gender,desc,email,curPasswd
 
       var updatedUser=createUserVjo(fullname,username,gender,desc,email,newPasswd);
       if(compareValue(updatedUser,dbUser)) //all values haven't changed. no need to do update
-        return callback(null,dbUser); 
+        return callback(null,dbUser);
 
       userDB.updateUser(updatedUser,function(err,user){
         return callback(err,user);
@@ -30,6 +30,12 @@ exports.updateUserProfile=function(fullname,username,gender,desc,email,curPasswd
 exports.retrieveUserParticulars=function(userId,callback){
   userDB.getUserById(userId,function(err,dbUser){
     return callback(err,dbUser);
+  });
+}
+
+exports.isNewUser=function(userId,callback){
+  userDB.getNewUserField(userId,function(err,flag){
+    return callback(err,flag);
   })
 }
 

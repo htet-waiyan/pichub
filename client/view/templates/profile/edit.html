@@ -7,39 +7,39 @@
 			<section class="panel d-width-50 m-width-50">
 				<div class="form-layout">
 					<span><i class="fa fa-book"></i></span>
-					<span><input type="text" name="fullname" placeholder="Enter full name" class="profile-control" /></span>
+					<span><input type="text" name="fullname" ng-model="userPart.fullname" placeholder="Enter full name" class="profile-control" /></span>
 				</div>
 				<div class="form-layout">
 					<span><i class="fa fa-user"></i></span>
-					<span><input type="text" name="username" placeholder="Enter username" class="profile-control" /></span>
+					<span><input type="text" name="username" ng-model="userPart.username" placeholder="Enter username" class="profile-control" /></span>
 				</div>
 				<div class="form-layout">
 					<span><i class="fa fa-venus-mars"></i></span>
-					<span><input type="radio" name="gender" value="M"/> Male</span>
-					<span><input type="radio" name="gender" value="F"/> Female</span>
+					<span><input type="radio" name="gender" value="Male" ng-model="userPart.gender"/> Male</span>
+					<span><input type="radio" name="gender" value="Female" ng-model="userPart.gender"/> Female</span>
 				</div>
 				<div class="form-layout">
 					<span><i class="fa fa-info-circle"></i></span>
-					<span><textarea class="profile-control" cols="25" rows="5"></textarea></span>
+					<span><textarea class="profile-control" cols="25" rows="5" ng-model="userPart.desc"></textarea></span>
 				</div>
 			</section>
 
 			<section class="panel d-width-50 m-width-50">
 				<div class="form-layout">
 					<span><i class="fa fa-envelope"></i></span>
-					<span><input type="email" name="email" placeholder="Enter email" class="profile-control" /></span>
+					<span><input type="email" name="email" placeholder="Enter email" ng-model="userPart.email" class="profile-control" /></span>
 				</div>
 				<div class="form-layout">
 					<span><i class="fa fa-lock"></i></span>
-					<span><input type="password" name="curPasswd" placeholder="Enter current password" class="profile-control" /></span>
+					<span><input type="password" name="curPasswd" ng-model="userPart.passwd" placeholder="Enter current password" class="profile-control" /></span>
 				</div>
 				<div class="form-layout">
 					<span><i class="fa fa-lock"></i></span>
-					<span><input type="password" name="newPasswd" placeholder="Enter new password" class="profile-control" /></span>
+					<span><input type="password" name="newPasswd" ng-model="newPasswd" placeholder="Enter new password" class="profile-control" /></span>
 				</div>
 				<div class="form-layout">
-					<span><button type="button" class="btn">Save</button></span>
-					<span><button type="button" class="btn">Cancel</button></span>
+					<span><button type="button" ng-click="peCtrl.submit()" class="btn">Save</button></span>
+					<span><button type="button" ng-click="peCtrl.cancelForm()" class="btn">Cancel</button></span>
 				</div>
 			</section>
 		</div>

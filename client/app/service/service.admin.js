@@ -2,6 +2,8 @@
   var pichubApp=w.pichubApp;
 
   var AdminService=function($http,$q){
+    var newUser=true;
+
     this.doSignup=function(user){
       var defered=$q.defer();
 

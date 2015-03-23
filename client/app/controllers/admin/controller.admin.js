@@ -15,7 +15,7 @@
     }
   }
 
-  var LoginController=function($scope,$window,$adminService){
+  var LoginController=function($rootScope,$scope,$window,$adminService){
     $scope.formData={};
 
     this.submit=function(){
@@ -31,5 +31,5 @@
   }
 
   pichubApp.controller('SignupCtrl',['$scope','$window','adminService',SignupController]);
-  pichubApp.controller('LoginCtrl',['$scope','$window','adminService',LoginController]);
+  pichubApp.controller('LoginCtrl',['$rootScope','$scope','$window','adminService',LoginController]);
 })(window);

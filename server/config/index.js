@@ -5,6 +5,8 @@ var _secret=require('./secret').secret;
 
 var cookieParser=require('cookie-parser');
 var session=require('express-session');
+var multer=require('multer');
+var uploadPath=require('./setting').UPLOAD_PATH_UNIX;
 
 module.exports=function(app){
   var absPath=function(){
@@ -21,6 +23,15 @@ module.exports=function(app){
   /*** middleware configuration ***/
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(bodyParser.json());
+  app.use(multer({
+    dest:uploadPath.avator,
+    rename:function(fieldname,filename){
+      return filename+"_avator";
+    },
+    onFileUploadComplete:function(file,req,res){
+      console.log(file.originalname+" has been uploaded successfully");
+    }
+  }));
 
   /*** cookies and session middlewares ***/
   app.use(cookieParser());

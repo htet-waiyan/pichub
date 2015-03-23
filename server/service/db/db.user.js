@@ -60,6 +60,22 @@ UserDB.prototype.getUserById=function(id,callback){
   })
 }
 
+UserDB.prototype.getNewUserField=function(_userId,callback){
+  this.getCollection(function(err,col,db){
+    if(err)
+      return callback(err,null);
+
+    col.find({"_id":new ObjectId(_userId)},{"newUser":1,"_id":0})
+        .toArray(function(err,doc){
+          if(err)
+            return callback(err,null);
+
+          console.log(_userId);
+          return callback(null,doc[0].newUser);
+        })
+  })
+}
+
 UserDB.prototype.createUser=function(user,callback){
   console.log("Trace : UserDB.createUser");
   var createIndex=this.createIndex;
