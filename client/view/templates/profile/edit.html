@@ -27,16 +27,19 @@
 			<section class="panel d-width-50 m-width-50">
 				<div class="form-layout">
 					<span><i class="fa fa-envelope"></i></span>
-					<span><input type="email" name="email" placeholder="Enter email" ng-model="userPart.email" class="profile-control" /></span>
+					<span><input type="email" name="email" placeholder="Enter email" ng-model="userPart.credentials.email" class="profile-control" /></span>
 				</div>
-				<div class="form-layout">
+				<div class="for-layout">
+					<button type="button" class="control btn btn-download">Change password</button>
+				</div>
+				<!--<div class="form-layout">
 					<span><i class="fa fa-lock"></i></span>
-					<span><input type="password" name="curPasswd" ng-model="userPart.passwd" placeholder="Enter current password" class="profile-control" /></span>
+					<span><input type="password" name="curPasswd" ng-model="userPart.credentials.passwd" placeholder="Enter current password" class="profile-control" /></span>
 				</div>
 				<div class="form-layout">
 					<span><i class="fa fa-lock"></i></span>
 					<span><input type="password" name="newPasswd" ng-model="newPasswd" placeholder="Enter new password" class="profile-control" /></span>
-				</div>
+				</div>-->
 				<div class="form-layout">
 					<span><button type="button" ng-click="peCtrl.submit()" class="btn">Save</button></span>
 					<span><button type="button" ng-click="peCtrl.cancelForm()" class="btn">Cancel</button></span>

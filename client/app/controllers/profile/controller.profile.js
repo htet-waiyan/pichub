@@ -8,19 +8,19 @@
 	function ProfileAdminController($scope,$location,profileService){
 		profileService.getProfileUserData()
 			.then(function(data){
-				$scope.userPart=data;
+				$scope.userPart=data.particulars;
 				$scope.newPasswd;
 			},function(err){
 				//redirect to 500 error page
-			})
+			});
 
 		this.submit=function(){
 			$scope.userPart.newPasswd=$scope.newPasswd;
-			profileService.saveUserProfile($scope.userPart)
+			profileService.saveUserProfile({updatedUser:$scope.userPart})
 					.then(function(data){
 						$scope.msg=data.msg;
 					},function(error){
-						$scope.errMsg=data.errMsg;
+						$scope.errMsg=data.msg;
 					})
 		}
 		this.cancelForm=function(){

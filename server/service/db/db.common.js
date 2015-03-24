@@ -41,14 +41,14 @@ CommonDB.prototype.insert=function(data,option,callback){
   });
 }
 
-CommonDB.prototype.update=function(updatedData,option,callback){
+CommonDB.prototype.update=function(updatedData,_userId,option,callback){
   console.log("Trace : CommonDb.update");
 
   this.getCollection(function(err,col,db){
     if(err)
       return callback(err,null);
 
-    col.update({"_id":ObjectId(updateData._id)},{"$set":updatedData},option,function(err,dbData){
+    col.update({"_id":new ObjectId(_userId)},{"$set":updatedData},option,function(err,dbData){
       if(err)
         return callback(err,null);
 

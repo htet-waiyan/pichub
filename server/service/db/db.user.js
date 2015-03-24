@@ -92,9 +92,9 @@ UserDB.prototype.createUser=function(user,callback){
   });
 }
 
-UserDB.prototype.updateUser=function(updatedUser,callback){
+UserDB.prototype.updateUser=function(updatedUser,_userId,callback){
   console.log("Trace : UserDB.updateUser");
-  this.update(updatedUser,{w:1},function(err,dbUser){
+  this.update(updatedUser,_userId,{w:1},function(err,dbUser){
     if(err)
       return callback(err,null);
 

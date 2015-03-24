@@ -1,21 +1,19 @@
 var profileService=require('./../../service/profile/profile.index.js');
+var EventEmitter=require('events').EventEmitter;
+var emitter=new EventEmitter();
 
 exports.handleProfileUpdate=function(req,res,next){
-  /*profileService.updateUserProfile(req.body.fullname,req.body.username,req.body,gender,
-    req.body.desc,req.body.email,req.body.curPasswd,req.body.newPasswd,req.session.userId,function(err,updatedUser){
+  var updatedUser=req.body.updatedUser;
+  updatedUser.newUser=false;
+
+  profileService.updateUserProfile(req.body.updatedUser,req.session.userId,
+    function(err,dbUser){
       if(err)
-        return next(err);
+        return next(err); //application exception;
 
-      res.status(302);
-      res.redirect('/profile');
-    })*/
-	profileService.getCurrentPassword(req.session.userId,function(err,passwd){
-		if(err)
-			throw err;
-
-		res.status(200);
-		res.end(JSON.stringify({"password":passwd}));
-	})
+      res.status(200);
+      res.end(JSON.stringify({msg:"User profile updated successfully"}));
+    })
 }
 
 exports.handleRetreiveUserData=function(req,res,next){
