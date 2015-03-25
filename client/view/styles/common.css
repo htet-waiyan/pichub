@@ -39,6 +39,8 @@ a:link{text-decoration: none;}
 }
 .container{width: 100%;position: relative;margin: 0;padding: 0;overflow: hidden;}
 .btn{padding: 10px 15px; color:#fff;border:none;cursor: pointer;}
+.btn-save{background-color:#4460ED;}
+.btn-cancel{background-color:#3BFF63;}
 .btn-download{width: 250px; display: block; background-color: #327299; border-radius: 5px;  font-size: 25px;}
 .btn-download:hover{background-color: #3C81AB;}
 @media screen and (max-width: 768px){

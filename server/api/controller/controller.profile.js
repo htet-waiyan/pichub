@@ -1,10 +1,15 @@
-var profileService=require('./../../service/profile/profile.index.js');
+var ProfileService=require('./../../service/profile/profile.index.js');
 var EventEmitter=require('events').EventEmitter;
-var emitter=new EventEmitter();
+var profileService=new ProfileService();
 
 exports.handleProfileUpdate=function(req,res,next){
   var updatedUser=req.body.updatedUser;
   updatedUser.newUser=false;
+
+  profileService.on('bizErr.profile.input',function(msg){
+    req.msg=msg;
+    next();
+  });
 
   profileService.updateUserProfile(req.body.updatedUser,req.session.userId,
     function(err,dbUser){

@@ -3,9 +3,16 @@ var error=require('./../../config/setting').err;
 var userDB=new UserDB();
 var _=require('lodash');
 var EventEmitter=require('events').EventEmitter;
-var emitter=new EventEmitter();
+var util=require('util');
 
-exports.updateUserProfile=function(updatedUser,userId,callback){
+function ProfileService(){EventEmitter.call(this);}
+
+util.inherits(ProfileService,EventEmitter);
+
+ProfileService.prototype.updateUserProfile=function(updatedUser,userId,callback){
+  if(!validate.call(this,updatedUser)) // validation failed;
+    return;
+
   userDB.getUserById(userId,function(err,dbUser){
     if(err)
       return callback(err,null);
@@ -13,7 +20,7 @@ exports.updateUserProfile=function(updatedUser,userId,callback){
     if(compareValue(updatedUser,dbUser))
       return callback(null,dbUser);
 
-    userDB.updateUser(updatedUser,userId,function(err,user){
+    userDB.updateUser(updatedUser,userId,function(err,user){ // check duplication for email and username
       return callback(err,user);
     })
   })
@@ -21,13 +28,13 @@ exports.updateUserProfile=function(updatedUser,userId,callback){
   return true;
 }
 
-exports.retrieveUserParticulars=function(userId,callback){
+ProfileService.prototype.retrieveUserParticulars=function(userId,callback){
   userDB.getUserById(userId,function(err,dbUser){
     return callback(err,dbUser);
   });
 }
 
-exports.isNewUser=function(userId,callback){
+ProfileService.prototype.isNewUser=function(userId,callback){
   userDB.getNewUserField(userId,function(err,flag){
     return callback(err,flag);
   })
@@ -50,3 +57,33 @@ function checkCurrentPassword(curPassword,userId,callback){
     return curPassword==passwd;
   })
 }
+
+/*** this function will be called with a corresponding context value - this ***/
+function validate(updatedUser){
+  /*** validate emptiness ***/
+  if(!updatedUser.fullname){
+    this.emit('bizErr.profile.input',{errMsg:"Fullname is required."});
+    return false;
+  }
+  if(!updatedUser.username){
+    this.emit('bizErr.profile.input',{errMsg:"Username is required."});
+    return false;
+  }
+  if(!updatedUser.gender){
+    this.emit('bizErr.profile.input',{errMsg:"Gender is required."});
+    return false;
+  }
+  if(!updatedUser.email){
+    this.emit('bizErr.profile.input',{errMsg:"Email is required."});
+    return false;
+  }
+
+  /*** verifiy format ***/
+  if(updatedUser.desc && updatedUser.desc.length>150){
+    this.emit('bizErr.profile.input',{errMsg:"Description must not be more than 150 characters"});
+    return false;
+  }
+  return true;
+}
+
+module.exports=ProfileService;

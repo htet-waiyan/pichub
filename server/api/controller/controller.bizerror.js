@@ -10,3 +10,9 @@ exports.handleSignupBizError=function(req,res,next){
 	res.status(406);
 	res.end(JSON.stringify(returnMsg));
 }
+
+exports.handleProfileEditError=function(req,res,next){
+	console.log("Trace : handleProfileEditError");
+	res.status(406);
+	res.end(JSON.stringify(req.msg));
+}
