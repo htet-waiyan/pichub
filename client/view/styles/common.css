@@ -38,9 +38,9 @@ a:link{text-decoration: none;}
   .brand{font-size: 20px;}
 }
 .container{width: 100%;position: relative;margin: 0;padding: 0;overflow: hidden;}
-.btn{padding: 10px 15px; color:#fff;border:none;cursor: pointer;}
-.btn-save{background-color:#4460ED;}
-.btn-cancel{background-color:#3BFF63;}
+.btn{padding: 10px 15px; color:#fff;border:none;cursor: pointer;border-radius: 3px;}
+.btn-save{background-color:#4460ED; padding-left:2em;padding-right: 2em;}
+.btn-cancel{background-color:#3BFF63;padding-left:2em;padding-right: 2em;}
 .btn-download{width: 250px; display: block; background-color: #327299; border-radius: 5px;  font-size: 25px;}
 .btn-download:hover{background-color: #3C81AB;}
 @media screen and (max-width: 768px){

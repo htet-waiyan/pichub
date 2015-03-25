@@ -6,6 +6,11 @@ exports.handleProfileUpdate=function(req,res,next){
   var updatedUser=req.body.updatedUser;
   updatedUser.newUser=false;
 
+  if(req.session.uploadFile){
+    updatedUser.thumbnail=req.session.uploadFile.path;
+    delete req.session.uploadFile;
+  }
+
   profileService.on('bizErr.profile.input',function(msg){
     req.msg=msg;
     next();

@@ -1,0 +1,15 @@
+Workbreakdown for profile edit
+===============================
+1.) particular inputs
+2.) client site validations
+3.) server side validation with error emittion/subscription pattern
+4.) username/email duplication check
+5.) avator ajax upload with progress bar
+6.) update user particulars with avator inclusive (in one transaction)
+
+Workbreakdown for profile
+===========================
+
+1.) retrieve user particulars with thumbnail photo
+2.) retrieve count for followings/followers/threads/photos
+3.) retrieve threads
