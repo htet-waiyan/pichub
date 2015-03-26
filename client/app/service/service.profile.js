@@ -46,6 +46,20 @@
 
 			return defered.promise;
 		}
+		this.savePasswordChange=function(password){
+			var defered=$q.defer();
+			$http({
+				url:'/api/profile/password/save',
+				method:'POST',
+				data:JSON.stringify(password)
+			}).success(function(data,status,config){
+				defered.resolve(data);
+			}).error(function(data,status,config){
+				defered.reject(data);
+			})
+
+			return defered.promise;
+		}
 	}
 
 	pichub.service('ProfileService',['$http','$q',ProfileService]);

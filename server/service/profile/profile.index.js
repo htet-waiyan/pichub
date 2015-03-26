@@ -28,6 +28,21 @@ ProfileService.prototype.updateUserProfile=function(updatedUser,userId,callback)
   return true;
 }
 
+ProfileService.prototype.getCurrentPassword=function(userId,callback){
+  userDB.getCurrentPassword(userId,function(err,passwd){
+    return callback(err,passwd);
+  })
+}
+
+ProfileService.prototype.savePasswordChange=function(newPwd,currPwd,dbPwd,userId,callback){
+  if(!validatePassword.call(this,newPwd,currPwd,dbPwd))//validation failed.
+    return;
+
+  userDB.savePasswordChange(userId,newPwd,function(err,pwd){
+    return callback(err,pwd);
+  })
+}
+
 ProfileService.prototype.retrieveUserParticulars=function(userId,callback){
   userDB.getUserById(userId,function(err,dbUser){
     return callback(err,dbUser);
@@ -47,15 +62,6 @@ function compareValue(updatedUser,dbUser){
     return true;
 
   return false;
-}
-
-function checkCurrentPassword(curPassword,userId,callback){
-  userDB.getCurrentPassword(userId,function(err,passwd){
-    if(err)
-      return callback(err,null);
-
-    return curPassword==passwd;
-  })
 }
 
 /*** this function will be called with a corresponding context value - this ***/
@@ -83,6 +89,24 @@ function validate(updatedUser){
     this.emit('bizErr.profile.input',{errMsg:"Description must not be more than 150 characters"});
     return false;
   }
+  return true;
+}
+
+function validatePassword(newPwd,currPwd,dbPwd){
+  if(_.isEmpty(newPwd)){
+    this.emit('bizErr.profile.input',{errMsg:"New password need to be specified"})
+    return false;
+  }
+  if(_.isEmpty(currPwd)){
+    this.emit('bizErr.profile.input',{errMsg:"Current password need to be specified"});
+    return false;
+  }
+
+  if(!_.isEqual(currPwd,dbPwd)){
+    this.emit('bizErr.profile.input',{errMsg:"Current password is incorrect. Please enter correct one."});
+    return false;
+  }
+
   return true;
 }
 

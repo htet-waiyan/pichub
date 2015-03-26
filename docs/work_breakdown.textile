@@ -6,6 +6,10 @@ Workbreakdown for profile edit
 4.) username/email duplication check
 5.) avator ajax upload with progress bar
 6.) update user particulars with avator inclusive (in one transaction)
+7.) retrieve current password and stored in the session.
+8.) validate current password
+9.) update the password(credentials fields of user)
+10.) disable 'Cancel' button if newUser
 
 Workbreakdown for profile
 ===========================

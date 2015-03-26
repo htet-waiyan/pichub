@@ -50,6 +50,13 @@ UserDB.prototype.getCurrentPassword=function(userId,callback){
   })
 }
 
+UserDB.prototype.savePasswordChange=function(userId,newPwd,callback){
+  var updatedData={'credentials.passwd':newPwd};
+  this.update(updatedData,userId,{w:1},function(err,pwd){
+    return callback(err,pwd);
+  })
+}
+
 UserDB.prototype.getUserById=function(id,callback){
   console.log("Trace : UserDB.findById");
   this.find(id,function(err,dbUser,db,col){

@@ -6,6 +6,7 @@
 	}
 
 	function ProfileAdminController($scope,$location,profileService){
+		$scope.currentPwd=$scope.newPwd="";
 		profileService.getProfileUserData()
 			.then(function(data){
 				$scope.userPart=data.particulars;
@@ -22,6 +23,16 @@
 					},function(error){
 						$scope.errMsg=data.msg;
 					})
+		}
+		this.changePassword=function(){
+			var passwd={curPwd:$scope.currentPwd,newPwd:$scope.newPwd};
+			profileService.savePasswordChange(passwd)
+				.then(function(data){
+					$scope.msg=data.msg;
+					/*** show msg and redirect to /profile ***/
+				},function(err){
+					$scope.errMsg=data.msg;
+				})
 		}
 		this.cancelForm=function(){
 			$location.path('/profile'); //

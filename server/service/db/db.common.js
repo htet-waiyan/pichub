@@ -42,7 +42,7 @@ CommonDB.prototype.insert=function(data,option,callback){
 }
 
 CommonDB.prototype.update=function(updatedData,_userId,option,callback){
-  console.log("Trace : CommonDb.update");
+  console.log("Trace : CommonDb.update "+_userId);
 
   this.getCollection(function(err,col,db){
     if(err)

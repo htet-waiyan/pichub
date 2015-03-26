@@ -14,5 +14,6 @@ router.get('/profile/newUser',profileController.retrieveNewUserFlag);
 router.get('/profile/userdata',profileController.handleRetreiveUserData);
 router.post('/profile/edit/save',profileController.handleProfileUpdate,bizErrHandler.handleProfileEditError);
 router.post('/profile/avator/upload',profileController.handleAvatorUpload);
+router.post('/profile/password/save',profileController.handlePasswordChange,bizErrHandler.handleProfileEditError);
 
 module.exports=router;

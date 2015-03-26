@@ -1,0 +1,21 @@
+<main class="passwd-edit">
+	<form novalidate name="pwdEditForm">
+		<div class="form-layout info-pane" ng-show="msg">{{msg}}</div>
+		<div class="form-layout error-pane" ng-show="errMsg">{{errMsg}}</div>
+		<div class="form-layout">
+			<div class="error-test" ng-show="!pwdEditForm.curPasswd.$pristine && pwdEditForm.curPasswd.$error.required">Current password needs to be specified</div>
+			<span><i class="fa fa-lock"></i></span>
+			<span><input type="password" name="curPasswd" ng-model="currentPwd" 
+				placeholder="Enter current password" class="profile-control" /></span>
+		</div>
+		<div class="form-layout">
+			<div class="error-test" ng-show="!pwdEditForm.newPasswd.$pristine && pwdEditForm.newPasswd.$error.required">New password needs to be specified</div>
+			<span><i class="fa fa-lock"></i></span>
+			<span><input type="password" name="newPasswd" ng-model="newPwd" placeholder="Enter new password" class="profile-control" /></span>
+		</div>
+		<div class="for-layout ph-btngroup">
+			<span><button type="submit" class="btn btn-save" ng-click="peCtrl.changePassword()">Save</button></span>
+			<span><button type="button" ng-click="peCtrl.cancelForm()" class="btn btn-cancel">Cancel</button></span>
+		</div>
+	</form>
+</main>

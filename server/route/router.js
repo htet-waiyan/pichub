@@ -1,5 +1,6 @@
 'use strict'
 /*** All routers defines here ***/
+var profileController=require('./../api/controller/controller.profile.js');
 
 var controller=require('./../api/controller/');
 
@@ -31,6 +32,12 @@ module.exports=function(app){
         res.status(200);
         res.sendFile('templates/profile/content.html',app.get('routePath'));
       });
+
+  app.route('/profile/password')
+      .get(profileController.handleRetrievePassword,function(req,res,next){
+          res.status(200);
+          res.sendFile('templates/profile/passwd.html',app.get('routePath'));
+      })
 
   app.route('/profile/edit')
       .get(function(req,res,next){

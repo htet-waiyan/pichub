@@ -14,6 +14,10 @@
       templateUrl:'/profile/edit',
       controller:'ProfileAdminController',
       controllerAs:'peCtrl'
+    }).when('/profile/password',{
+      templateUrl:'/profile/password',
+      controller:'ProfileAdminController',
+      controllerAs:'peCtrl'
     })
 
     $locationProvider.html5Mode(true);
