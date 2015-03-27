@@ -17,6 +17,7 @@ module.exports=function(app){
     root:path.join(absPath,'/client/view')
   };
 
+  global.routePath=routePath;
   app.set('routePath',routePath);
   app.set('root',absPath);
 

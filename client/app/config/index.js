@@ -2,7 +2,19 @@
   var pichub=w.pichubApp;
 
   pichub.config(function($routeProvider,$locationProvider){
-    $routeProvider.when('/feed',{
+    $routeProvider.when('/',{
+      templateUrl:'/landing',
+      controller:'HomeController',
+      controllerAs:'hmCtrl'
+    }).when('/login',{
+      templateUrl:'/landing/login',
+      controller:'AdminController',
+      controllerAs:'adminCtrl'
+    }).when('/signup',{
+      templateUrl:'/landing/signup',
+      controller:'AdminController',
+      controllerAs:'adminCtrl'
+    }).when('/feed',{
       templateUrl:'/feed/content',
       controller:'FeedController',
       controllerAs:'feedCtrl'
@@ -20,6 +32,6 @@
       controllerAs:'peCtrl'
     })
 
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
   })
 })(window)

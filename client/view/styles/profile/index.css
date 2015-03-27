@@ -9,7 +9,7 @@
 	border-radius: 5px;
 }
 .profile-edit{width: 60%;}
-.passwd-edit{width: 40%;}
+.passwd-edit{width: 25%;}
 
 .profile-control{
 	padding-top: 5px;
@@ -32,3 +32,6 @@
 .ph-btngroup span:first-of-type{
 	margin-left: 45px;
 }
+
+.error-container{padding: 3px; padding-left: 2em;font-size: 12px;}
+.error-text{font-size: 14px !important;}

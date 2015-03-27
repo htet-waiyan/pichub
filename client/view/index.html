@@ -10,7 +10,16 @@
     <title></title>
   </head>
   <body>
-    <div class="container full-height">
+    <div class="menubar pichub-menubar">
+      <a class="menu" href="#/">Pichub</a>
+      <a class="menu" href="#">Login</a>
+      <a class="menu" href="#">Sign up</a>
+    </div>
+
+    <div class="container-full" ng-view></div>
+
+
+  <!-- <div class="container full-height">
       <div class="layout full-height">
         <section class="panel m-width-100 d-width-50" id="left-pane" ng-controller="LoginCtrl as ctrl">
           <main>
@@ -30,37 +39,38 @@
           <main>
             <form name="signupForm" novalidate>
               <div class="form-layout info-pane" ng-show="successMsg">{{successMsg}}</div>
-              <!-- Full name -->
+             
               <div class="form-layout">
                 <span class="error-text" ng-show="!signupForm.fullname.$pristine && signupForm.fullname.$error.required">Fullname is required.</span>
                 <input type="text" name="username" ng-model="formData.username" class="control signup-control" placeholder="Enter fullname" required/>
               </div>
 
-              <!-- Email -->
+              
               <div class="form-layout">
                 <span class="error-text" ng-show="!signupForm.email.$pristine && signupForm.email.$error.required">Email is required.</span>
                 <span class="error-text" ng-show="!signupForm.email.$pristine && signupForm.email.$invalid">Invalid email address.</span>
                 <input type="email" name="email" ng-model="formData.email" class="control signup-control" placeholder="Enter email" required/>
               </div>
 
-              <!-- Password -->
+              
               <div class="form-layout">
                 <span class="error-text" ng-show="!signupForm.passwd.$pristine && signupForm.passwd.$error.required">Password is required.</span>
                 <input type="password" name="passwd" ng-model="formData.passwd" class="control signup-control" placeholder="Enter password" required>
               </div>
 
-              <!-- Submit -->
+              
               <div class="form-layout"><button type="submit" ng-click="ctrl.submit()" class="control btn btn-signup">Register</button></div>
               <div class="form-layout"><span>Already have an account? Login Me!</span></div>
             </form>
           </main>
         </section>
       </div>
-    </div>
+    </div>-->
 
     <script type="text/javascript" src="/angular/angular.min.js"></script>
     <script type="text/javascript" src="/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="/app/main.js"></script>
     <script type="text/javascript" src="/app/service/service.admin.js"></script>
     <script type="text/javascript" src="/app/controllers/admin/controller.admin.js"></script>
+    <script type="text/javascript" src="/app/config/index.js"></script>
   </body>

@@ -79,7 +79,7 @@ function validate(updatedUser){
     this.emit('bizErr.profile.input',{errMsg:"Gender is required."});
     return false;
   }
-  if(!updatedUser.email){
+  if(!updatedUser.credentials.email){
     this.emit('bizErr.profile.input',{errMsg:"Email is required."});
     return false;
   }
@@ -93,12 +93,13 @@ function validate(updatedUser){
 }
 
 function validatePassword(newPwd,currPwd,dbPwd){
-  if(_.isEmpty(newPwd)){
-    this.emit('bizErr.profile.input',{errMsg:"New password need to be specified"})
-    return false;
-  }
   if(_.isEmpty(currPwd)){
     this.emit('bizErr.profile.input',{errMsg:"Current password need to be specified"});
+    return false;
+  }
+
+  if(_.isEmpty(newPwd)){
+    this.emit('bizErr.profile.input',{errMsg:"New password need to be specified"})
     return false;
   }
 

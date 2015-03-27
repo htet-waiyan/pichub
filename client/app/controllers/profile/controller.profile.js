@@ -24,7 +24,8 @@
 						$scope.errMsg=data.msg;
 					})
 		}
-		this.changePassword=function(){
+		this.changePassword=function($invalid){
+			if($invalid){$scope.pwdEditForm.submitted=true; return;}
 			var passwd={curPwd:$scope.currentPwd,newPwd:$scope.newPwd};
 			profileService.savePasswordChange(passwd)
 				.then(function(data){

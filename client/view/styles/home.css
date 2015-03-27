@@ -1,4 +1,4 @@
-html,body{margin: 0;padding:0;width: 100%;height: 100%;}
+/**html,body{margin: 0;padding:0;width: 100%;height: 100%;}
 
 #left-pane{height: 100%;background-color: #4AEDA8;font-size: 16px;}
 #right-pane{height: 100%;background-color: #3D3D3D;font-size: 16px;}
@@ -23,4 +23,8 @@ div.form-layout:last-of-type{
 
 .signup-control{background-color: #666; color:#fff;}
 .btn-login{background-color: #FFD032; font-size: 14px; color:#666;}
-.btn-signup{background-color: #FF2A60; font-size: 14px; color:#fff;}
+.btn-signup{background-color: #FF2A60; font-size: 14px; color:#fff;}**/
+
+.pichub-menubar{background-color: #777;}
+.menu:first-of-type{margin-left: 30px; margin-right: 20px;}
+.menu:last-of-type{margin-right:30px;}
