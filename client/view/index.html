@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/normalize.css/normalize.css">
+    <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/asset/fa/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/view/styles/common.css">
     <link rel="stylesheet" type="text/css" href="/view/styles/home.css">
     <title></title>
@@ -12,8 +14,8 @@
   <body>
     <div class="menubar pichub-menubar">
       <a class="menu" href="#/">Pichub</a>
-      <a class="menu" href="#">Login</a>
-      <a class="menu" href="#">Sign up</a>
+      <a class="menu" href="#"><i class="fa fa-sign-in"></i> Login</a>
+      <a class="menu" href="#"><i class="fa fa-user-plus"></i> Sign up</a>
     </div>
 
     <div class="container-full" ng-view></div>
@@ -39,26 +41,26 @@
           <main>
             <form name="signupForm" novalidate>
               <div class="form-layout info-pane" ng-show="successMsg">{{successMsg}}</div>
-             
+
               <div class="form-layout">
                 <span class="error-text" ng-show="!signupForm.fullname.$pristine && signupForm.fullname.$error.required">Fullname is required.</span>
                 <input type="text" name="username" ng-model="formData.username" class="control signup-control" placeholder="Enter fullname" required/>
               </div>
 
-              
+
               <div class="form-layout">
                 <span class="error-text" ng-show="!signupForm.email.$pristine && signupForm.email.$error.required">Email is required.</span>
                 <span class="error-text" ng-show="!signupForm.email.$pristine && signupForm.email.$invalid">Invalid email address.</span>
                 <input type="email" name="email" ng-model="formData.email" class="control signup-control" placeholder="Enter email" required/>
               </div>
 
-              
+
               <div class="form-layout">
                 <span class="error-text" ng-show="!signupForm.passwd.$pristine && signupForm.passwd.$error.required">Password is required.</span>
                 <input type="password" name="passwd" ng-model="formData.passwd" class="control signup-control" placeholder="Enter password" required>
               </div>
 
-              
+
               <div class="form-layout"><button type="submit" ng-click="ctrl.submit()" class="control btn btn-signup">Register</button></div>
               <div class="form-layout"><span>Already have an account? Login Me!</span></div>
             </form>

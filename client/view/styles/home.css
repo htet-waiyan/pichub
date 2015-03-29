@@ -28,3 +28,18 @@ div.form-layout:last-of-type{
 .pichub-menubar{background-color: #777;}
 .menu:first-of-type{margin-left: 30px; margin-right: 20px;}
 .menu:last-of-type{margin-right:30px;}
+.jumbotron-container{
+  height: 55%;position: relative;
+  background-image: url('/asset/jumbo.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+#heading-text{margin-top: 5%;font-family: 'Lora';}
+.ph-jumbotron{font-size: 30px; text-align: center;clear: left;}
+.ph-jumbotron p{font-size: 1.5em; margin: 0;}
+.tagline{margin-bottom: 10px;font-size: 20px; color:#4D4C4C;}
+.tagline span{font-size: 1.5em;} .tagline small{font-size: 1em;}
+#always-free{margin-top: 2%;margin-bottom: 0;padding: 0;color:#4D4C4C;}
+#always-free p{font-size: 30px;}
+#license a:link{font-size: 16px;color: #666;margin: 0;padding: 0;}
