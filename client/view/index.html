@@ -4,21 +4,24 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/normalize.css/normalize.css">
     <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/asset/fa/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/view/styles/common.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/view/styles/home.css">
     <title></title>
   </head>
   <body>
-    <div class="menubar pichub-menubar">
-      <a class="menu" href="#/">Pichub</a>
-      <a class="menu" href="#"><i class="fa fa-sign-in"></i> Login</a>
-      <a class="menu" href="#"><i class="fa fa-user-plus"></i> Sign up</a>
+    <div class="navbar navbar-default pichub-menubar">
+      <div class="container-fluid">
+        <div class="navbar-header"><a class="navbar-brand" href="#/">Pichub</a></div>
+        <ul class="nav navbar-nav">
+          <li><a class="menu" href="#"><i class="fa fa-sign-in"></i> Login</a></li>
+          <li><a class="menu" href="#"><i class="fa fa-user-plus"></i> Sign up</a></li>
+        </ul>
+      </div>
     </div>
 
-    <div class="container-full" ng-view></div>
+    <div class="container-fluid ph-container-fluid" ng-view></div>
 
 
   <!-- <div class="container full-height">

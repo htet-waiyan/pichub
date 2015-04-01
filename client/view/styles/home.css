@@ -24,22 +24,37 @@ div.form-layout:last-of-type{
 .signup-control{background-color: #666; color:#fff;}
 .btn-login{background-color: #FFD032; font-size: 14px; color:#666;}
 .btn-signup{background-color: #FF2A60; font-size: 14px; color:#fff;}**/
-
-.pichub-menubar{background-color: #777;}
-.menu:first-of-type{margin-left: 30px; margin-right: 20px;}
-.menu:last-of-type{margin-right:30px;}
-.jumbotron-container{
-  height: 55%;position: relative;
+.ph-container-fluid{padding-left: 0 !important; padding-right: 0 !important;}
+.pichub-menubar{background-color: #242424;margin-bottom: 0 !important; border: 1px solid #242424;border-radius: 0;}
+.ph-jumbotron{
   background-image: url('/asset/jumbo.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+
+  margin: 0;
+  max-width: 100%;
+  border-radius: 0 !important;
+  height: 450px;font-size: 18px;
+
 }
-#heading-text{margin-top: 5%;font-family: 'Lora';}
-.ph-jumbotron{font-size: 30px; text-align: center;clear: left;}
-.ph-jumbotron p{font-size: 1.5em; margin: 0;}
-.tagline{margin-bottom: 10px;font-size: 20px; color:#4D4C4C;}
-.tagline span{font-size: 1.5em;} .tagline small{font-size: 1em;}
-#always-free{margin-top: 2%;margin-bottom: 0;padding: 0;color:#4D4C4C;}
-#always-free p{font-size: 30px;}
-#license a:link{font-size: 16px;color: #666;margin: 0;padding: 0;}
+.jumbotron h1{font-size: 2.8em; font-weight: 600;text-align: center;}
+.jumbotron h3{font-size: 2em; text-align: center;}
+.jumbotron a:link{text-decoration: none; color:#444; text-align: center;display: block; font-size: .9em;margin-bottom: 5px;}
+.btn-phStart,.btn-explore{width: 250px;color: #DBD6D6 !important; padding-top: 10px;padding-bottom: 10px; margin-left: auto;margin-right: auto;}
+.tagline-row{margin-bottom: 3.5em;}
+.tagline{text-align: center;}
+.tagline span{font-size: 1.5em;}
+.tagline small{font-size:1.2em;}
+
+.feature{border:2px solid #666; font-size: 20px; height: 230px;margin:10px;padding-top: 10px;background-color: #F4F4F4;}
+.feature:first-of-type{margin-left: 9em;}
+.i-follow{color: #5DFF42;}
+.i-upload{color:#FF4312;}
+.i-share{color:#273DED;}
+.feature i{font-size: 4em;text-align: center; display: block;}
+.feature h3{font-size: 1.5em;margin-top:0; text-align: center;}
+.feature p{font-size: 1em;}
+
+.getStart{background-color: #67D3ED ; padding-top: 18px; padding-bottom: 25px;}
+.getStart h1{text-align: center;}
