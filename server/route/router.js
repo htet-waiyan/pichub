@@ -12,8 +12,8 @@ module.exports=function(app){
   /*** Router for pages ***/
   /*** Landing Page Routers ***/
   app.route('/')
-      .get(controller.checkLogin,function(req,res,next){
-          res.set('isAuthenticated',true);
+      .get(function(req,res,next){
+          console.log(req.params.token);
           res.status(200);
           res.sendFile('index.html',app.get('routePath'));
       });

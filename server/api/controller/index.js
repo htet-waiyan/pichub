@@ -32,6 +32,14 @@ exports.secureAccess=function(req,res,next){
 
 /*** End of Security and Authorization Implementation ***/
 
+exports.handleCookiesRequest=function(req,res,next){
+  console.log("Getting Cookies Information : "+req.params.key);
+  res.status(200);
+  res.set("Access-Control-Allow-Origin","http://localhost:2000");
+  res.cookie('key',req.params.key);
+  res.end(JSON.stringify({cookie:'dummy cookie data'}));
+}
+
 exports.handleLogin=function(req,res,next){
   console.log("Trace : handleLogin");
   console.log(JSON.stringify(req.body));
@@ -93,4 +101,3 @@ exports.handlePhotoUpload=function(req,res,next){
 }
 
 /*** helper middlewares **/
-

@@ -22,6 +22,18 @@ module.exports=function(app){
   app.set('root',absPath);
 
   /*** middleware configuration ***/
+  /*** cookies and session middlewares ***/
+  //app.use(cookieParser());
+  app.use(session({
+    secret:_secret,
+    name:"jssession_pichub",
+    resave:true,
+    saveUninitialized:false,
+    cookie:{
+      path:'/',
+      secure:false
+    }
+  }));
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(bodyParser.json());
   app.use(multer({
@@ -31,19 +43,6 @@ module.exports=function(app){
     },
     onFileUploadComplete:function(file,req,res){
       console.log(file.originalname+" has been uploaded successfully");
-    }
-  }));
-
-  /*** cookies and session middlewares ***/
-  app.use(cookieParser());
-  app.use(session({
-    secret:_secret,
-    name:"jssession_pichub",
-    resave:true,
-    saveUninitialized:false,
-    cookie:{
-      path:'/',
-      secure:false
     }
   }));
 
