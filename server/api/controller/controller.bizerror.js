@@ -7,6 +7,9 @@ exports.handleSignupBizError=function(req,res,next){
 	else if(req.dupEmail)
 		returnMsg.msg="A user is already registered with this email"
 
+	else if(req.inputErr)
+		returnMsg.msg=req.inputErr.errMsg;
+
 	res.status(406);
 	res.end(JSON.stringify(returnMsg));
 }

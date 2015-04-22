@@ -1,7 +1,9 @@
-var admin=require('./../../service/admin/');
+var Admin=require('./../../service/admin/');
 var profileService=require('./../../service/profile/profile.index.js');
 var thread=require('./../../service/thread');
 var model=require('./../../model/');
+
+var admin=new Admin();
 
 /*** Security And Authorization Implementation ***/
 exports.checkSession=function(req,res,next){
@@ -67,6 +69,10 @@ exports.handleLogin=function(req,res,next){
 exports.handleSignUp=function(req,res,next){
   console.log("Trace : handleSingup");
   var user=model.initUser(req.body.username,req.body.email,req.body.passwd);
+  admin.on('bizErr.signup.input',function(errMsg){
+    req.inputErr=errMsg;
+    return next();
+  });
   admin.signUpUser(user,function(err,dbUser,dupUsername,dupEmail){
     if(err){
       return next(err);
@@ -78,7 +84,7 @@ exports.handleSignUp=function(req,res,next){
     }
 
     res.status(200);
-    res.end(JSON.stringify({msg:"Registered successfully! Please login."}));
+    res.end(JSON.stringify({msg:"Registered successfully! Please login.",user:dbUser._id}));
   })
 }
 
