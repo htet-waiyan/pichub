@@ -12,6 +12,7 @@ var allowPermittedOrigin=function(req,res,next){
   res.set("Access-Control-Allow-Origin","http://localhost:2000");
   res.set("Access-Control-Allow-Methods","POST");
   res.set("Access-Control-Allow-Headers","accept, content-type, x-customer-header");
+  res.set("Access-Control-Allow-Credentials",true);
 
   if("OPTIONS"==req.method)
     return res.status(200).send();

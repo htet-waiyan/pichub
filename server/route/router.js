@@ -10,7 +10,7 @@ module.exports=function(app){
    * no need to check for authorized access
    * as long as the request is from permitted origin
   ***/
-  /*app.use(function(req,res,next){
+  app.use(function(req,res,next){
     if(req.url=='/api/login' || req.url=='/api/signup')
       return next();
 
@@ -19,7 +19,7 @@ module.exports=function(app){
 
     res.status(302);
     res.redirect('http://localhost:2000');
-  })*/
+  })
 
   /*** Router for api ***/
   app.use('/api',require('./../api/api.routes'));
@@ -30,7 +30,6 @@ module.exports=function(app){
   app.route('/')
       .get(function(req,res,next){
           res.status(200);
-          console.log(req.session);
           res.sendFile('index.html',app.get('routePath'));
       });
 
