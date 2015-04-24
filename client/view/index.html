@@ -11,71 +11,61 @@
     <title></title>
   </head>
   <body>
-    <div class="navbar navbar-default pichub-menubar">
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
-        <div class="navbar-header"><a class="navbar-brand" href="#/">Pichub</a></div>
-        <ul class="nav navbar-nav">
-          <li><a class="menu" href="#"><i class="fa fa-sign-in"></i> Login</a></li>
-          <li><a class="menu" href="#"><i class="fa fa-user-plus"></i> Sign up</a></li>
-        </ul>
-      </div>
-    </div>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#pichub-navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Pichub</a>
+        </div>
 
-    <div class="container-fluid ph-container-fluid" ng-view></div>
+        <div class="collapse navbar-collapse" id="pichub-navbar">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Explore</a></li>
+          </ul>
 
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+          </form>
 
-  <!-- <div class="container full-height">
-      <div class="layout full-height">
-        <section class="panel m-width-100 d-width-50" id="left-pane" ng-controller="LoginCtrl as ctrl">
-          <main>
-            <form name="form" novalidate>
-              <div class="form-layout error-pane" ng-show="errMsg">{{errMsg}}</div>
-              <div class="form-layout">
-                <input type="email" ng-model="formData.email" name="email" class="control" placeholder="Enter email"/>
-              </div>
-              <div class="form-layout"><input type="password" ng-model="formData.passwd" name="passwd" class="control" placeholder="Enter password"></div>
-              <div class="form-layout"><button type="button" ng-click="ctrl.submit()" class="control btn btn-login">Login</button></div>
-              <div class="form-layout"><a href="#">Forget password?</a></div>
-              <div class="form-layout"><span>Haven't has an account? Register now!</span></div>
-            </form>
-          </main>
-        </section>
-        <section class="panel m-width-100 d-width-50" id="right-pane" ng-controller="SignupCtrl as ctrl">
-          <main>
-            <form name="signupForm" novalidate>
-              <div class="form-layout info-pane" ng-show="successMsg">{{successMsg}}</div>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Account Setting</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Logout</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Upload</a></li>
+          </ul>
+        </div><!-- end of pichub-navbar -->
+      </div><!-- end of container-fluid -->
+    </nav>
+    <div class="container-fluid" ui-view><div>
 
-              <div class="form-layout">
-                <span class="error-text" ng-show="!signupForm.fullname.$pristine && signupForm.fullname.$error.required">Fullname is required.</span>
-                <input type="text" name="username" ng-model="formData.username" class="control signup-control" placeholder="Enter fullname" required/>
-              </div>
-
-
-              <div class="form-layout">
-                <span class="error-text" ng-show="!signupForm.email.$pristine && signupForm.email.$error.required">Email is required.</span>
-                <span class="error-text" ng-show="!signupForm.email.$pristine && signupForm.email.$invalid">Invalid email address.</span>
-                <input type="email" name="email" ng-model="formData.email" class="control signup-control" placeholder="Enter email" required/>
-              </div>
-
-
-              <div class="form-layout">
-                <span class="error-text" ng-show="!signupForm.passwd.$pristine && signupForm.passwd.$error.required">Password is required.</span>
-                <input type="password" name="passwd" ng-model="formData.passwd" class="control signup-control" placeholder="Enter password" required>
-              </div>
-
-
-              <div class="form-layout"><button type="submit" ng-click="ctrl.submit()" class="control btn btn-signup">Register</button></div>
-              <div class="form-layout"><span>Already have an account? Login Me!</span></div>
-            </form>
-          </main>
-        </section>
-      </div>
-    </div>-->
-
-    <script type="text/javascript" src="/angular/angular.min.js"></script>
-    <script type="text/javascript" src="/angular-route/angular-route.min.js"></script>
+    <script src="/jquery/dist/jquery.min.js"/>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"/>
+    <script src="/bootstrap/js/collapse.js"/>
+    <script src="/bootstrap/js/dropdown.js"/>
+    <!--<script type="text/javascript" src="/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="/app/main.js"></script>
     <script type="text/javascript" src="/app/service/service.admin.js"></script>
     <script type="text/javascript" src="/app/controllers/admin/controller.admin.js"></script>
-    <script type="text/javascript" src="/app/config/index.js"></script>
+    <script type="text/javascript" src="/app/config/index.js"></script>-->
+    <script>
+      $(function(){
+        $('.dropdown-toggle').dropdown();
+      })
+    </script>
   </body>
