@@ -24,6 +24,7 @@ module.exports=function(app){
   /*** Router for api ***/
   app.use('/api',require('./../api/api.routes'));
   app.use('/landing',require('./landing.router.js'));
+  app.use('/home',require('./home.route.js'));
 
   /*** Router for pages ***/
   /*** Landing Page Routers ***/
@@ -31,36 +32,6 @@ module.exports=function(app){
       .get(function(req,res,next){
           res.status(200);
           res.sendFile('index.html',app.get('routePath'));
-      });
-
-  app.route('/feed')
-      .get(controller.checkSession,function(req,res,next){
-        res.status(200);
-        res.sendFile('main.html',app.get('routePath'));
-      });
-
-  app.route('/feed/content')
-      .get(controller.checkSession,function(req,res,next){
-        res.status(200);
-        res.sendFile('templates/feed/feed.html',app.get('routePath'));
-      });
-
-  app.route('/profile/content')
-      .get(function(req,res,next){
-        res.status(200);
-        res.sendFile('templates/profile/content.html',app.get('routePath'));
-      });
-
-  app.route('/profile/password')
-      .get(profileController.handleRetrievePassword,function(req,res,next){
-          res.status(200);
-          res.sendFile('templates/profile/passwd.html',app.get('routePath'));
-      })
-
-  app.route('/profile/edit')
-      .get(function(req,res,next){
-        res.status(200);
-        res.sendFile('templates/profile/edit.html',app.get('routePath'));
       });
 
   app.use(function(err,req,res,next){

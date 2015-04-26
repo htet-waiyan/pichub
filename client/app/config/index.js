@@ -1,8 +1,15 @@
 (function(w){
   var pichub=w.pichubApp;
 
-  pichub.config(function($routeProvider,$locationProvider){
-    $routeProvider.when('/',{
+  pichub.config(function($stateProvider,$urlRouterProvider){
+    //$urlRouterProvider.otherwise('/');
+    $stateProvider
+        .state('home',{
+          url:'',
+          templateUrl:'/home'
+        })
+
+    /*$routeProvider.when('/',{
       templateUrl:'/landing',
       controller:'HomeController',
       controllerAs:'hmCtrl'
@@ -32,6 +39,6 @@
       controllerAs:'peCtrl'
     })
 
-    //$locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);*/
   })
 })(window)
