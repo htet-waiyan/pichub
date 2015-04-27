@@ -60,6 +60,21 @@
 
 			return defered.promise;
 		}
+
+		this.searchProfile=function(_keyword){
+			var defered=$q.defer();
+			$http({
+				url:'/api/profile/search',
+				method:'GET',
+				params:{keyword:_keyword}
+			}).success(function(data,status,option){
+				defered.resolve(data);
+			}).error(function(data,status,option){
+				defered.reject(data);
+			})
+
+			return defered.promise;
+		}
 	}
 
 	pichub.service('ProfileService',['$http','$q',ProfileService]);

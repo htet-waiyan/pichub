@@ -10,7 +10,7 @@
     <title></title>
   </head>
   <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" ng-controller="CommonController as ctrl">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#pichub-navbar">
@@ -30,7 +30,7 @@
 
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search users, thread and photo">
+              <input type="text" class="form-control" ng-model="keyword" placeholder="Search users, thread and photo" ng-keypress="ctrl.searchProfile($event)">
             </div>
           </form>
 
@@ -58,6 +58,8 @@
     <script type="text/javascript" src="/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="/app/main.js"></script>
     <script type="text/javascript" src="/app/config/index.js"></script>
+    <script type="text/javascript" src="/app/service/service.profile.js"></script>
+    <script type="text/javascript" src="/app/controllers/controller.common.js"></script>
   </body>
   </head>
 </html>
