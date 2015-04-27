@@ -67,6 +67,15 @@ exports.handleRetreiveUserData=function(req,res,next){
   })
 }
 
+exports.handleUserProfileSearch=function(req,res,next){
+  profileService.searchUserProfile(req.query.keyword,function(err,userList){
+    if(err)
+      return next(err);
+
+    res.status(200).end(JSON.stringify({foundUsers:userList}));
+  })
+}
+
 exports.retrieveNewUserFlag=function(req,res,next){
   profileService.isNewUser(req.session.userId,function(err,isNew){
     if(err)

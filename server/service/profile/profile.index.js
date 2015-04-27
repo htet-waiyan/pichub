@@ -9,6 +9,15 @@ function ProfileService(){EventEmitter.call(this);}
 
 util.inherits(ProfileService,EventEmitter);
 
+ProfileService.prototype.searchUserProfile=function(keyword,callback){
+  userDB.getUserByNameIdPartial(keyword,function(err,userList){
+    if(err)
+      return callback(err,null);
+
+    return callback(null,userList);
+  })
+}
+
 ProfileService.prototype.updateUserProfile=function(updatedUser,userId,callback){
   if(!validate.call(this,updatedUser)) // validation failed;
     return;

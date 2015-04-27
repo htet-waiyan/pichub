@@ -11,6 +11,7 @@ router.post('/signup',controller.handleSignUp,bizErrHandler.handleSignupBizError
 
 router.post('/thread/create',controller.checkSession,controller.handleThreadCreation);
 
+router.get('/profile/search',profileController.handleUserProfileSearch);
 router.get('/profile/newUser',profileController.retrieveNewUserFlag);
 router.get('/profile/userdata',profileController.handleRetreiveUserData);
 router.post('/profile/edit/save',profileController.handleProfileUpdate,bizErrHandler.handleProfileEditError);

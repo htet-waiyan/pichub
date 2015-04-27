@@ -34,6 +34,23 @@ UserDB.prototype.getUserByEmailPasswd=function(email,passwd,callback){
   })
 }
 
+UserDB.prototype.getUserByNameIdPartial=function(keyword,callback){
+  console.log("Trace : UserDB.getUserByNameIdPartial");
+  this.getCollection(function(err,col,db){
+    if(err)
+      return callback(err,null);
+
+    col.find({$or:[{username:{$regex:keyword,$options:'i'}},{fullname:{$regex:keyword,$options:'i'}}]},
+            {username:1,fullname:1})
+              .toArray(function(err,userList){
+                if(err)
+                  return callback(err,null);
+
+                return callback(null,userList);
+              })
+  })
+}
+
 UserDB.prototype.getCurrentPassword=function(userId,callback){
   console.log("Trace : UserDB.getCurrentPassword");
   this.getCollection(function(err,col,db){
