@@ -27,6 +27,12 @@
           url:'/search/:keyword',
           templateUrl:'/search',
           controller:'SearchController',
+          resolve:{
+            profileService:'ProfileService',
+            results:function(profileService,$stateParams){
+              return profileService.searchProfile($stateParams.keyword)
+            }
+          }
         })
   })
 })(window)
