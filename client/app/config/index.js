@@ -1,44 +1,32 @@
 (function(w){
   var pichub=w.pichubApp;
 
-  pichub.config(function($stateProvider,$urlRouterProvider){
+  pichub.config(function($stateProvider,$urlRouterProvider,$locationProvider){
     //$urlRouterProvider.otherwise('/');
     $stateProvider
         .state('home',{
           url:'',
           templateUrl:'/home'
         })
-
-    /*$routeProvider.when('/',{
-      templateUrl:'/landing',
-      controller:'HomeController',
-      controllerAs:'hmCtrl'
-    }).when('/login',{
-      templateUrl:'/landing/login',
-      controller:'AdminController',
-      controllerAs:'adminCtrl'
-    }).when('/signup',{
-      templateUrl:'/landing/signup',
-      controller:'AdminController',
-      controllerAs:'adminCtrl'
-    }).when('/feed',{
-      templateUrl:'/feed/content',
-      controller:'FeedController',
-      controllerAs:'feedCtrl'
-    }).when('/profile',{
-      templateUrl:'/profile/content',
-      controller:'ProfileContentController',
-      controllerAs:'pcCtrl'
-    }).when('/profile/edit',{
-      templateUrl:'/profile/edit',
-      controller:'ProfileAdminController',
-      controllerAs:'peCtrl'
-    }).when('/profile/password',{
-      templateUrl:'/profile/password',
-      controller:'ProfileAdminController',
-      controllerAs:'peCtrl'
-    })
-
-    //$locationProvider.html5Mode(true);*/
+        .state('explore',{
+          url:'/explore/:keyword',
+          template:'<h3>Explore {{data}}</h3>',
+          controller:function($scope,$stateParams){
+            console.log($stateParams.keyword);
+            $scope.data=$stateParams.keyword;
+          }
+        })
+        .state('data',{
+          url:'/data/:keyword',
+          template:'<h3>Getting Data...</h3>',
+          controller:function($scope,$stateParams){
+            console.log($stateParams);
+          }
+        })
+        .state('search',{
+          url:'/search/:keyword',
+          templateUrl:'/search',
+          controller:'SearchController',
+        })
   })
 })(window)

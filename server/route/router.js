@@ -34,6 +34,12 @@ module.exports=function(app){
           res.sendFile('index.html',app.get('routePath'));
       });
 
+  app.route('/search')
+      .get(function(req,res,next){
+        res.status(200);
+        res.sendFile('templates/search.html',app.get('routePath'));
+      })
+
   app.use(function(err,req,res,next){
       console.log("Internal Server Error");
       console.log(err.stack);

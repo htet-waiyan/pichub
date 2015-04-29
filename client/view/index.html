@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/"></base>
     <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/asset/fa/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.min.css">
@@ -25,12 +26,12 @@
         <div class="collapse navbar-collapse" id="pichub-navbar">
           <ul class="nav navbar-nav">
             <li><a ui-sref="home">Home</a></li>
-            <li><a ui-sref="explore">Explore</a></li>
+            <li><a ui-sref="explore({keyword:data})">Explore</a></li>
           </ul>
 
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
-              <input type="text" class="form-control" ng-model="keyword" placeholder="Search users, thread and photo" ng-keypress="ctrl.searchProfile($event)">
+              <input type="text" class="form-control" ng-model="keyword" ng-keypress="ctrl.searchProfile($event)" placeholder="Search users, thread and photo">
             </div>
           </form>
 
@@ -60,6 +61,7 @@
     <script type="text/javascript" src="/app/config/index.js"></script>
     <script type="text/javascript" src="/app/service/service.profile.js"></script>
     <script type="text/javascript" src="/app/controllers/controller.common.js"></script>
+    <script type="text/javascript" src="/app/controllers/controller.search.js"></script>
   </body>
   </head>
 </html>
