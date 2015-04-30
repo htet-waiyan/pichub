@@ -1,0 +1,16 @@
+var user={
+  "username":"_waiyan_",
+  "fullname":"Htet Wai Yan",
+  "thumbnail":{
+    "original_name":"htet.jpg",
+    "uploaded_name":"_waiyan_300420151646.jpeg",
+    "size":9588,
+    "path":"/files/thumbnails/_waiyan_300420151646.jpeg"
+  },
+  "credentials":{
+    "email":"h.waeyan@gmail.com",
+    "password":"htet12345"
+  },
+  "reg_date":"30/04/2015 16:48",
+  "terms_agree":true
+}

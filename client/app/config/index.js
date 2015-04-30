@@ -26,12 +26,23 @@
         .state('search',{
           url:'/search/:keyword',
           templateUrl:'/search',
-          controller:'SearchController',
+          controller:'ProfileAdminController',
+          controllerAs:'profileCtrl',
           resolve:{
             profileService:'ProfileService',
             results:function(profileService,$stateParams){
               return profileService.searchProfile($stateParams.keyword)
             }
+          }
+        })
+        .state('profile',{
+          url:'/:username',
+          templateUrl:'/profile',
+          controller:'ProfileAdminController',
+          controllerAs:'profileCtrl',
+          resolve:{
+            profileService:'ProfileService',
+            userData:function()
           }
         })
   })

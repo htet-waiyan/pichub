@@ -5,16 +5,19 @@
 		$scope.test="profilecontentcontroller";
 	}
 
-	function ProfileAdminController($scope,$location,profileService){
+	function ProfileAdminController($scope,$location,profileService,results){
 		$scope.currentPwd=$scope.newPwd="";
-		profileService.getProfileUserData()
+    $scope.resultList=results.foundUsers;
+		/*profileService.getProfileUserData()
 			.then(function(data){
 				$scope.userPart=data.particulars;
 				$scope.newPasswd;
 			},function(err){
 				//redirect to 500 error page
-			});
-
+			});*/
+		this.followUser=function(userId,username){
+			console.log(userId+' '+username);
+		}
 		this.submit=function(){
 			$scope.userPart.newPasswd=$scope.newPasswd;
 			profileService.saveUserProfile({updatedUser:$scope.userPart})
@@ -42,5 +45,5 @@
 
 	pichub
 		.controller('ProfileContentController',['$scope',ProfileContentController])
-		.controller('ProfileAdminController',['$scope','$location','ProfileService',ProfileAdminController]);
+		.controller('ProfileAdminController',['$scope','$location','ProfileService','results',ProfileAdminController]);
 })(window)

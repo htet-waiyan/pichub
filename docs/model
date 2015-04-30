@@ -1,47 +1,52 @@
 user = > thread => photos
 
 user={
-  *user_id:"",
-  name:"",
+  *_id:"",
   username:"",
-  thunbnail:"",
-  credential:{
+  fullname:"",
+  thumbnail:{
+    original_name:"",
+    uploaded_name:"",
+    size:"",
+    location:""
+  },
+  credentials:{
     email:"",
     password:""
   },
+  followers:[], //array of ids follow this user
+  followings:[], //array of ids has been followed by this user
   reg_date:"",
+  terms_agree:""
 }
 
 thread={
-  *id:"",
-  *name:"",
-  tag:[],
-  creation_date:"",
+  _id:"",
+  name:"",
+  created_date:"",
   description:"",
-  photos:[],
-  mode:"private"||"public",
-  contributor:[{_id:"",datetime:""}],
-  subscriber:[{_id:"",datetime:""}],
-  owner:{_id:"",datetime:""}
+  setting:{
+    mode:"", //public or private
+    preview:"", //boolean to decide if subscriber contribute straight or get approved by owner
+  },
+  ownder:"", // id reference of the owner
+  subscriber:[{userId:"",subscribed_time:""}] // arrays of id reference subscribed to this thread
 }
 
-photos:{
-    id:"",
-    filename:"",
-    path:"",
-    caption:"",
-    generated_fname:"",
-    upload_datetime:"",
-    likes:"",
-    comments:[{
-      id:"",
-      text:"",
-      datetime:"",
-      by:{
-        id:"",
-        name:""
-      }
-    }],
-    tag:[{id:"",text:""}],
-    threadIn:{_id:"",name:""}
+photo={
+  _id:"",
+  caption:"",
+  path:"", //absolute path
+  original_name:"",
+  uploaded_name:"",
+  likes:{
+    count:"",
+    likers:[] //array of ids liked this photo
   }
+  comments:[{
+    text:"",
+    commentator:"" //id commented this photo
+  }],
+  tags:[], //array of tags
+  threadIn:"" //id reference of thread in which this photo contains
+}
